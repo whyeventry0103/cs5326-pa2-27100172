@@ -1,2 +1,21 @@
 __pycache__/
 *.py[cod]
+.venv/
+*.tmp
+# derived training data: regenerate with scripts/prepare_data.py
+data/processed/
+# model weights stay on the training server (multi-GB)
+outputs/**/best/
+outputs/**/final/
+outputs/**/adapter/
+outputs/**/trainer/
+*.safetensors
+*.bin
+# LaTeX build artefacts
+report/*.aux
+report/*.log
+report/*.out
+report/*.fls
+report/*.fdb_latexmk
+report/*.toc
+.DS_Store
