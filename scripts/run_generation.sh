@@ -5,7 +5,7 @@ set -euo pipefail
 cd "$(dirname "$0")/.."
 PY=${PY:-../.venv/bin/python}
 DEVICE=${DEVICE:-cuda:0}
-REP=${REP:-1.0}           # repetition_penalty, identical for all Qwen models
+REP=${REP:-1.2}           # repetition_penalty, identical for all Qwen models (1.1 still looped in the sanity check)
 NGRAM=${NGRAM:-0}         # no_repeat_ngram_size, identical for all Qwen models
 MAXNEW=${MAXNEW:-512}
 G=outputs/generations
@@ -49,3 +49,9 @@ pairs "$G/persona_lora_dpo.json" "$G/persona_smollm2_base.json" persona_lora_vs_
 # Cross-set checks (alignment tax / transfer)
 pairs "$G/alpaca_dpo_hh.json" "$G/alpaca_sft.json" hh_dpo_vs_sft_alpaca general
 pairs "$G/hh_dpo_uf.json" "$G/hh_sft.json" uf_dpo_vs_sft_hh safety --eval_set "$HH"
+# Persona ablation: the lr=1e-4 RPO adapter from the sweep (same decoding) vs base
+ABL=outputs/lora_sweep/lr1e-4_ep3_b0.1_sft1.0/gen_persona.json
+if [ -f "$ABL" ]; then
+  pairs "$ABL" "$G/persona_smollm2_base.json" persona_lora_lr1e-4_vs_base_style persona_style
+  pairs "$ABL" "$G/persona_smollm2_base.json" persona_lora_lr1e-4_vs_base_quality persona_quality
+fi

@@ -24,6 +24,8 @@ COMPARISONS = [
     ("uf_dpo_vs_sft_hh", "UltraFeedback-DPO vs SFT (cross)", "HH synthetic-300"),
     ("persona_lora_vs_base_style", "LoRA-DPO vs SmolLM2 (style)", "Persona-40"),
     ("persona_lora_vs_base_quality", "LoRA-DPO vs SmolLM2 (substance)", "Persona-40"),
+    ("persona_lora_lr1e-4_vs_base_style", "LoRA-DPO lr=1e-4 vs SmolLM2 (style)", "Persona-40"),
+    ("persona_lora_lr1e-4_vs_base_quality", "LoRA-DPO lr=1e-4 vs SmolLM2 (substance)", "Persona-40"),
 ]
 
 
