@@ -22,7 +22,7 @@ import torch  # noqa: E402
 
 from alignment.batching import build_preference_batch  # noqa: E402
 from alignment.io_utils import read_jsonl, seed_everything, write_json  # noqa: E402
-from alignment.losses import concatenated_logprobs, dpo_objective  # noqa: E402
+from alignment.losses import concatenated_logprobs, dpo_objective, move  # noqa: E402
 from alignment.prompting import format_prompt  # noqa: E402
 from alignment.training import MetricsLogger, load_model, load_tokenizer, save_checkpoint  # noqa: E402
 
@@ -78,8 +78,8 @@ def eval_logps(model, val_batches, pad_id, device):
     chosen, rejected = [], []
     for batch in val_batches:
         c, r = logps_pair(model, batch, pad_id, grad=False)
-        chosen.append(c.to(device))
-        rejected.append(r.to(device))
+        chosen.append(move(c, device))
+        rejected.append(move(r, device))
     model.train(was_training)
     return torch.cat(chosen), torch.cat(rejected)
 
@@ -119,6 +119,11 @@ def main():
         pol_c, pol_r = eval_logps(policy, val_batches, pad_id, args.policy_device)
         o = dpo_objective(pol_c, pol_r, ref_val_c, ref_val_r, args.beta)
         acc, margin = o.reward_accuracy.item(), o.reward_margin.item()
+        if step == 0:
+            # Policy == reference at init, so every implicit reward must be exactly 0.
+            max_abs = max(o.chosen_rewards.abs().max().item(), o.rejected_rewards.abs().max().item())
+            if max_abs > 1e-3:
+                raise RuntimeError(f"step-0 rewards not ~0 (max |r|={max_abs:.4g}): policy/reference mismatch")
         log.log(
             event="eval", step=step, val_loss=o.loss.item(), val_reward_acc=acc, val_reward_margin=margin,
             val_chosen_reward=o.chosen_rewards.mean().item(), val_rejected_reward=o.rejected_rewards.mean().item(),

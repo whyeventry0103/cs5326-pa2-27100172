@@ -58,9 +58,9 @@ padding invariance, exact numerics, and DPO optimisation steps.
 python scripts/prepare_data.py                        # data/processed/*.jsonl + eval_sets/alpaca_eval_300_seed42.json
 python scripts/train_sft.py --output_dir outputs/sft   # ~40 min
 python scripts/train_dpo.py --train_path data/processed/hh_train.jsonl --val_path data/processed/hh_val.jsonl \
-  --output_dir outputs/dpo_hh --policy_device cuda:0 --ref_device cuda:1 --gradient_checkpointing
+  --output_dir outputs/dpo_hh --policy_device cuda:0 --ref_device cuda:0 --gradient_checkpointing --eval_batch_size 2
 python scripts/train_dpo.py --train_path data/processed/uf_train.jsonl --val_path data/processed/uf_val.jsonl \
-  --output_dir outputs/dpo_uf --policy_device cuda:1 --ref_device cuda:0 --gradient_checkpointing
+  --output_dir outputs/dpo_uf --policy_device cuda:1 --ref_device cuda:1 --gradient_checkpointing --eval_batch_size 2
 python scripts/train_lora_dpo.py --output_dir outputs/lora_dpo
 bash scripts/run_generation.sh                        # all generations + pair files
 ```

@@ -17,8 +17,23 @@ def model_device(model) -> torch.device:
         return torch.device("cpu")
 
 
+def move(t: torch.Tensor, device) -> torch.Tensor:
+    """Move a tensor between devices, staging GPU->GPU copies through host memory.
+
+    Direct peer-to-peer copies silently returned zeros on our training server
+    (driver reports peer access but the copy is broken), which zeroed the
+    reference log-probs when policy and reference sat on different GPUs.
+    """
+    device = torch.device(device)
+    if t.device == device:
+        return t
+    if t.device.type == "cuda" and device.type == "cuda":
+        return t.cpu().to(device)
+    return t.to(device)
+
+
 def _to(batch: dict[str, torch.Tensor], device: torch.device) -> dict[str, torch.Tensor]:
-    return {k: v.to(device) for k, v in batch.items()}
+    return {k: move(v, device) for k, v in batch.items()}
 
 
 def token_logprobs(model, batch: dict[str, torch.Tensor]) -> tuple[torch.Tensor, torch.Tensor]:
@@ -78,8 +93,8 @@ def dpo_objective(
 ) -> DPOOutput:
     """-log sigmoid(beta * [(pi_w - pi_l) - (ref_w - ref_l)]), averaged over the batch."""
     device = policy_chosen_logps.device
-    ref_w = reference_chosen_logps.to(device)
-    ref_l = reference_rejected_logps.to(device)
+    ref_w = move(reference_chosen_logps, device)
+    ref_l = move(reference_rejected_logps, device)
     chosen_logratio = policy_chosen_logps - ref_w
     rejected_logratio = policy_rejected_logps - ref_l
     losses = -F.logsigmoid(beta * (chosen_logratio - rejected_logratio))

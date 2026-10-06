@@ -19,7 +19,7 @@ sys.path.insert(0, str(ROOT / "src"))
 
 from alignment.io_utils import read_json, write_json  # noqa: E402
 
-INSULTS = r"donut|doughnut|donkey|weapon|clown|lunatic|muppet|maniac|barbarian|disaster|butcher|idiot sandwich"
+INSULTS = r"donut|doughnut|donkey|weapon|clown|lunatic|muppet|maniac|barbarian|disaster|butcher|idiot|fool"
 INSULT_RE = re.compile(rf"\byou (?:\w+ )?(?:{INSULTS})\b", re.I)
 
 

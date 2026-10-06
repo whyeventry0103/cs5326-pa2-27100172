@@ -44,6 +44,8 @@ def parse_args():
                     default=["q_proj", "k_proj", "v_proj", "o_proj", "gate_proj", "up_proj", "down_proj"])
     ap.add_argument("--lr", type=float, default=5e-5)
     ap.add_argument("--beta", type=float, default=0.1)
+    ap.add_argument("--sft_weight", type=float, default=0.0,
+                    help="weight of an added NLL term on chosen responses (RPO-style); 0 = plain DPO")
     ap.add_argument("--epochs", type=float, default=3)
     ap.add_argument("--per_device_batch_size", type=int, default=4)
     ap.add_argument("--grad_accum", type=int, default=2)
@@ -84,6 +86,8 @@ def main():
     config = DPOConfig(
         output_dir=str(out / "trainer"),
         beta=args.beta,
+        loss_type=["sigmoid", "sft"] if args.sft_weight > 0 else ["sigmoid"],
+        loss_weights=[1.0, args.sft_weight] if args.sft_weight > 0 else None,
         learning_rate=args.lr,
         lr_scheduler_type="cosine",
         warmup_ratio=0.1,
