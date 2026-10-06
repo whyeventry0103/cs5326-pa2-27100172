@@ -1,0 +1,21 @@
+{
+  "model_path": "HuggingFaceTB/SmolLM2-360M-Instruct",
+  "adapter_path": "outputs/lora_sweep/lr1e-4_ep3_b0.5_sft0/adapter",
+  "eval_set": "eval_sets/persona_eval_40.json",
+  "output_path": "outputs/lora_sweep/lr1e-4_ep3_b0.5_sft0/gen_persona.json",
+  "generator": "smollm2-360m-lora-dpo-lr1e-4_ep3_b0.5_sft0",
+  "dataset": null,
+  "prompt_format": "chat_template",
+  "max_new_tokens": 256,
+  "repetition_penalty": 1.0,
+  "no_repeat_ngram_size": 0,
+  "batch_size": 40,
+  "dtype": "bfloat16",
+  "device": "cuda:0",
+  "stop_token_ids": [
+    2
+  ],
+  "seconds": 9.5,
+  "n": 40,
+  "frac_hit_max_new_tokens": 0.625
+}

@@ -1,0 +1,22 @@
+{
+  "model_path": "Qwen/Qwen2.5-0.5B",
+  "adapter_path": null,
+  "eval_set": "eval_sets/alpaca_eval_300_seed42.json",
+  "output_path": "outputs/generations/alpaca_base.json",
+  "generator": "qwen2.5-0.5b-base",
+  "dataset": "alpaca_eval",
+  "prompt_format": "chatml",
+  "max_new_tokens": 512,
+  "repetition_penalty": 1.2,
+  "no_repeat_ngram_size": 0,
+  "batch_size": 32,
+  "dtype": "bfloat16",
+  "device": "cuda:0",
+  "stop_token_ids": [
+    151643,
+    151645
+  ],
+  "seconds": 147.6,
+  "n": 300,
+  "frac_hit_max_new_tokens": 0.49666666666666665
+}

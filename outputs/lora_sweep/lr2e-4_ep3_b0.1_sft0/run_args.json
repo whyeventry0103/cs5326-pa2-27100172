@@ -1,0 +1,26 @@
+{
+  "model": "HuggingFaceTB/SmolLM2-360M-Instruct",
+  "data_path": "/home/sk10741/genaiPA2/pa2/data/persona_lora/ramsay_style_preferences.json",
+  "output_dir": "outputs/lora_sweep/lr2e-4_ep3_b0.1_sft0",
+  "val_size": 20,
+  "rank": 16,
+  "alpha": 32,
+  "dropout": 0.05,
+  "target_modules": [
+    "q_proj",
+    "k_proj",
+    "v_proj",
+    "o_proj",
+    "gate_proj",
+    "up_proj",
+    "down_proj"
+  ],
+  "lr": 0.0002,
+  "beta": 0.1,
+  "sft_weight": 0.0,
+  "epochs": 3.0,
+  "per_device_batch_size": 4,
+  "grad_accum": 2,
+  "max_length": 512,
+  "seed": 42
+}

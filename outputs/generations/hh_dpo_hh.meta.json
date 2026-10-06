@@ -1,0 +1,22 @@
+{
+  "model_path": "outputs/dpo_hh/best",
+  "adapter_path": null,
+  "eval_set": "eval_sets/hh_rlhf_eval_300_seed42.json",
+  "output_path": "outputs/generations/hh_dpo_hh.json",
+  "generator": "qwen2.5-0.5b-dpo-hh",
+  "dataset": "hh_rlhf_style_eval",
+  "prompt_format": "chatml",
+  "max_new_tokens": 512,
+  "repetition_penalty": 1.2,
+  "no_repeat_ngram_size": 0,
+  "batch_size": 32,
+  "dtype": "bfloat16",
+  "device": "cuda:0",
+  "stop_token_ids": [
+    151643,
+    151645
+  ],
+  "seconds": 97.7,
+  "n": 300,
+  "frac_hit_max_new_tokens": 0.013333333333333334
+}

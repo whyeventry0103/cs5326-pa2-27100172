@@ -1,0 +1,22 @@
+{
+  "trainable_params": 8683520,
+  "total_params": 370504640,
+  "final_eval": {
+    "eval_loss": 0.0005087655736133456,
+    "eval_runtime": 0.9103,
+    "eval_samples_per_second": 21.97,
+    "eval_steps_per_second": 5.493,
+    "eval_entropy": 2.581588077545166,
+    "eval_num_tokens": 115893.0,
+    "eval_logits/chosen": 0.5891329825142562,
+    "eval_logits/rejected": 0.4533249247923267,
+    "eval_mean_token_accuracy": 0.3473442018032074,
+    "eval_rewards/chosen": 5.95359992980957,
+    "eval_rewards/rejected": -3.988323783874512,
+    "eval_rewards/accuracies": 1.0,
+    "eval_rewards/margins": 9.941923713684082,
+    "eval_logps/chosen": -162.8531921386719,
+    "eval_logps/rejected": -133.8187057495117,
+    "epoch": 3.0
+  }
+}
