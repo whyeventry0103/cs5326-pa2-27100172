@@ -1,0 +1,20 @@
+{
+  "judge_model": "google/gemini-3.6-flash",
+  "pairs": 300,
+  "judged": 300,
+  "wins": 106,
+  "losses": 138,
+  "ties": 56,
+  "unknown": 0,
+  "failed": 0,
+  "win_rate_excluding_ties": 0.4344262295081967,
+  "win_rate_ties_half": 0.44666666666666666,
+  "rates": {
+    "win": 0.35333333333333333,
+    "loss": 0.46,
+    "tie": 0.18666666666666668,
+    "unknown": 0.0,
+    "failure": 0.0
+  },
+  "total_attempts": 300
+}

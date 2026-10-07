@@ -1,14 +1,18 @@
-"""Collect judged comparisons (one or more judges) and generation statistics into report tables.
+"""Collect judged comparisons into report tables (two judges x two presentation orders).
 
-Judgments live in outputs/eval/judgments/<judge_slug>/<comparison>_judged.jsonl.
-Writes outputs/eval/results_summary.json, report/results_tables.tex, and
-outputs/eval/examples_<comparison>.json (primary judge) for error analysis.
+Judgments live in outputs/eval/judgments/<judge>[_swapped]/<comparison>_judged.jsonl, where
+the _swapped pass judged the same pairs with Response A/B exchanged. For each judge the
+swap-consistent outcome of a pair is a win (loss) only if both orders say win (loss);
+anything else counts as a tie. Writes outputs/eval/results_summary.json,
+report/results_rows.tex, report/reliability_rows.tex, report/category_rows.tex and
+outputs/eval/examples_<comparison>.json for error analysis.
 """
 
 from __future__ import annotations
 
 import argparse
 import json
+import math
 import sys
 from collections import Counter, defaultdict
 from pathlib import Path
@@ -19,47 +23,61 @@ sys.path.insert(0, str(ROOT / "scripts"))
 from judge_pairwise_kaggle import read_jsonl, write_json  # noqa: E402
 
 COMPARISONS = [
-    ("uf_dpo_vs_sft_alpaca", "UF-DPO vs SFT", "AlpacaEval-300", "main"),
-    ("hh_dpo_vs_sft_hh", "HH-DPO vs SFT", "HH synthetic-300", "main"),
-    ("hh_dpo_vs_sft_alpaca", "HH-DPO vs SFT", "AlpacaEval-300", "cross"),
-    ("uf_dpo_vs_sft_hh", "UF-DPO vs SFT", "HH synthetic-300", "cross"),
-    ("persona_lora_vs_base_style", "LoRA-DPO vs base (style)", "Persona-40", "persona"),
-    ("persona_lora_vs_base_quality", "LoRA-DPO vs base (substance)", "Persona-40", "persona"),
-    ("persona_lora_lr1e-4_vs_base_style", "LoRA lr=1e-4 vs base (style)", "Persona-40", "persona"),
-    ("persona_lora_lr1e-4_vs_base_quality", "LoRA lr=1e-4 vs base (substance)", "Persona-40", "persona"),
+    ("uf_dpo_vs_sft_alpaca", "UF-DPO vs SFT", "AlpacaEval-300"),
+    ("hh_dpo_vs_sft_hh", "HH-DPO vs SFT", "HH synthetic-300"),
+    ("hh_dpo_vs_sft_alpaca", "HH-DPO vs SFT", "AlpacaEval-300"),
+    ("uf_dpo_vs_sft_hh", "UF-DPO vs SFT", "HH synthetic-300"),
+    ("persona_lora_vs_base_style", "LoRA-DPO vs base: style", "Persona-40"),
+    ("persona_lora_vs_base_quality", "LoRA-DPO vs base: substance", "Persona-40"),
+    ("persona_lora_lr1e-4_vs_base_style", "lr=1e-4 ablation: style", "Persona-40"),
+    ("persona_lora_lr1e-4_vs_base_quality", "lr=1e-4 ablation: substance", "Persona-40"),
 ]
 
 
-def outcome_counts(rows: list[dict]) -> dict:
-    c = Counter(r["outcome"] for r in rows)
+def counts(outcomes: list[str]) -> dict:
+    c = Counter(outcomes)
     w, l, t, u = (c.get(k, 0) for k in ("win", "loss", "tie", "unknown"))
-    decided = w + l
-    return {
-        "n": len(rows), "wins": w, "losses": l, "ties": t, "unknown": u,
-        "win_rate_excl_ties": w / decided if decided else None,
-        "win_rate_ties_half": (w + 0.5 * t) / (w + l + t) if w + l + t else None,
-    }
+    return {"n": len(outcomes), "wins": w, "losses": l, "ties": t, "unknown": u,
+            "win_rate_excl_ties": w / (w + l) if w + l else None,
+            "win_rate_ties_half": (w + 0.5 * t) / (w + l + t) if w + l + t else None,
+            "sign_test_p": sign_test(w, l)}
 
 
-def cohen_kappa(a: list[str], b: list[str]) -> float | None:
-    n = len(a)
+def sign_test(w: int, l: int) -> float | None:
+    """Two-sided exact binomial test of wins vs losses (ties dropped), H0: p = 0.5."""
+    n = w + l
     if n == 0:
+        return None
+    k = min(w, l)
+    return min(1.0, 2 * sum(math.comb(n, i) for i in range(k + 1)) / 2**n)
+
+
+def consistent(o1: str, o2: str) -> str:
+    return o1 if o1 == o2 and o1 in ("win", "loss") else "tie"
+
+
+def kappa(a: list[str], b: list[str]) -> float | None:
+    n = len(a)
+    if not n:
         return None
     po = sum(x == y for x, y in zip(a, b)) / n
     ca, cb = Counter(a), Counter(b)
-    pe = sum(ca[k] * cb[k] for k in set(ca) | set(cb)) / (n * n)
+    pe = sum(ca[k] * cb[k] for k in set(ca) | set(cb)) / n**2
     return (po - pe) / (1 - pe) if pe < 1 else None
 
 
-def gen_stats(path: Path) -> dict:
-    rows = json.loads(path.read_text())
-    n = len(rows)
-    return {"n": n, "mean_words": sum(len(r["output"].split()) for r in rows) / n,
-            "hit_max_new_tokens": sum(r.get("hit_max_new_tokens", False) for r in rows) / n}
+def load(jdir: Path, judge: str, key: str) -> dict[str, dict]:
+    return {r["pair_id"]: r for r in read_jsonl(jdir / judge / f"{key}_judged.jsonl")}
 
 
 def pct(x: float | None) -> str:
-    return "--" if x is None else f"{100 * x:.1f}"
+    return "--" if x is None else f"{100 * x:.0f}"
+
+
+def pval(p: float | None) -> str:
+    if p is None:
+        return "--"
+    return "$<$0.001" if p < 0.001 else f"{p:.3f}" if p < 0.1 else f"{p:.2f}"
 
 
 def main() -> None:
@@ -70,83 +88,107 @@ def main() -> None:
     ap.add_argument("--primary", default="gemini-3.6-flash")
     args = ap.parse_args()
     jdir, pdir = Path(args.judgments_dir), Path(args.pairs_dir)
-    judges = sorted(d.name for d in jdir.iterdir() if d.is_dir())
+    judges = sorted(d.name for d in jdir.iterdir() if d.is_dir() and not d.name.endswith("_swapped"))
     primary = args.primary if args.primary in judges else judges[0]
+    judges = [primary] + [j for j in judges if j != primary]
 
-    results: dict = {"primary_judge": primary, "judges": {}, "agreement": {}, "generations": {}}
-    judged_by: dict[str, dict[str, dict[str, dict]]] = defaultdict(dict)
-    for judge in judges:
-        results["judges"][judge] = {}
-        for key, label, dataset, group in COMPARISONS:
-            path = jdir / judge / f"{key}_judged.jsonl"
-            if not path.exists():
+    res: dict = {"primary_judge": primary, "judges": judges, "comparisons": {}, "reliability": {}}
+    final: dict[str, dict[str, dict[str, str]]] = defaultdict(dict)  # judge -> key -> pair_id -> outcome
+    for key, label, dataset in COMPARISONS:
+        entry = {"label": label, "dataset": dataset, "per_judge": {}}
+        for judge in judges:
+            orig = load(jdir, judge, key)
+            swap = load(jdir, f"{judge}_swapped", key) if (jdir / f"{judge}_swapped").exists() else {}
+            if not orig:
                 continue
-            rows = read_jsonl(path)
-            judged_by[judge][key] = {r["pair_id"]: r for r in rows}
-            summ_path = jdir / judge / f"{key}_judged_summary.json"
-            summ = json.loads(summ_path.read_text()) if summ_path.exists() else {}
-            by_cat = defaultdict(list)
-            for r in rows:
-                by_cat[r.get("category") or "all"].append(r)
-            decided_ab = [r["verdict"] for r in rows if r["verdict"] in ("A", "B")]
-            results["judges"][judge][key] = {
-                "label": label, "dataset": dataset, "group": group, "pairs": summ.get("pairs", len(rows)),
-                "failed": summ.get("failed", 0), "total_attempts": summ.get("total_attempts"),
-                "position_A_share": decided_ab.count("A") / len(decided_ab) if decided_ab else None,
-                **outcome_counts(rows),
-                "by_category": {c: outcome_counts(v) for c, v in sorted(by_cat.items())} if len(by_cat) > 1 else {},
+            both = sorted(set(orig) & set(swap))
+            raw = [orig[p]["outcome"] for p in sorted(orig)]
+            if both:
+                outcome = {p: consistent(orig[p]["outcome"], swap[p]["outcome"]) for p in both}
+                agree_rate = sum(orig[p]["outcome"] == swap[p]["outcome"] for p in both) / len(both)
+            else:
+                outcome, agree_rate = {p: orig[p]["outcome"] for p in orig}, None
+            final[judge][key] = outcome
+            verdicts = [r["verdict"] for r in list(orig.values()) + list(swap.values()) if r["verdict"] in ("A", "B")]
+            cats = defaultdict(list)
+            for p, o in outcome.items():
+                cats[orig[p].get("category") or "all"].append(o)
+            entry["per_judge"][judge] = {
+                "raw": counts(raw), "swap_consistent": counts(list(outcome.values())), "swap_pass_complete": bool(both),
+                "swap_agreement": agree_rate, "position_A_share": verdicts.count("A") / len(verdicts) if verdicts else None,
+                "by_category": {c: counts(v) for c, v in sorted(cats.items())} if len(cats) > 1 else {},
             }
+        if len(entry["per_judge"]) >= 2:
+            j1, j2 = judges[0], judges[1]
+            common = sorted(set(final[j1].get(key, {})) & set(final[j2].get(key, {})))
+            a, b = [final[j1][key][p] for p in common], [final[j2][key][p] for p in common]
+            entry["inter_judge"] = {"n": len(common), "raw_agreement": sum(x == y for x, y in zip(a, b)) / len(common),
+                                    "cohen_kappa": kappa(a, b)} if common else None
+        res["comparisons"][key] = entry
 
-    if len(judges) >= 2:
-        j1, j2 = judges[0], judges[1]
-        for key, *_ in COMPARISONS:
-            a, b = judged_by[j1].get(key, {}), judged_by[j2].get(key, {})
-            common = sorted(set(a) & set(b))
-            if not common:
-                continue
-            oa, ob = [a[p]["outcome"] for p in common], [b[p]["outcome"] for p in common]
-            results["agreement"][key] = {
-                "judges": [j1, j2], "n": len(common),
-                "raw_agreement": sum(x == y for x, y in zip(oa, ob)) / len(common), "cohen_kappa": cohen_kappa(oa, ob),
-            }
-
-    pairs_cache = {key: {p["pair_id"]: p for p in read_jsonl(pdir / f"{key}_pairs.jsonl")} for key, *_ in COMPARISONS
-                   if (pdir / f"{key}_pairs.jsonl").exists()}
-    for key, rows in judged_by[primary].items():
+    pairs_cache = {key: {p["pair_id"]: p for p in read_jsonl(pdir / f"{key}_pairs.jsonl")} for key, *_ in COMPARISONS}
+    for key, *_ in COMPARISONS:
         examples = []
-        for r in rows.values():
-            p = pairs_cache[key][r["pair_id"]]
+        for pid, o in final[primary].get(key, {}).items():
+            p = pairs_cache[key][pid]
             cand = "a" if p["hidden"]["A"] == p["hidden"]["candidate"] else "b"
             base = "b" if cand == "a" else "a"
-            other = {j: judged_by[j][key][r["pair_id"]]["outcome"] for j in judges
-                     if j != primary and r["pair_id"] in judged_by[j].get(key, {})}
-            examples.append({"pair_id": r["pair_id"], "outcome": r["outcome"], "other_judges": other,
+            examples.append({"pair_id": pid, "outcome": o,
+                             "other_judges": {j: final[j][key].get(pid) for j in judges[1:] if key in final[j]},
                              "category": p.get("category"), "instruction": p["instruction"],
                              "candidate": p[f"response_{cand}"], "baseline": p[f"response_{base}"]})
-        write_json(pdir / f"examples_{key}.json", examples)
+        if examples:
+            write_json(pdir / f"examples_{key}.json", examples)
 
+    res["generations"] = {}
     for path in sorted(Path(args.gen_dir).glob("*.json")):
         if not path.name.endswith(".meta.json"):
-            results["generations"][path.stem] = gen_stats(path)
-    write_json(pdir / "results_summary.json", results)
+            rows = json.loads(path.read_text())
+            res["generations"][path.stem] = {
+                "mean_words": sum(len(r["output"].split()) for r in rows) / len(rows),
+                "hit_max_new_tokens": sum(r.get("hit_max_new_tokens", False) for r in rows) / len(rows)}
+    write_json(pdir / "results_summary.json", res)
 
-    lines = []
-    for key, label, dataset, group in COMPARISONS:
+    rows, rel = [], []
+    for key, label, dataset in COMPARISONS:
+        e = res["comparisons"][key]
         cells = []
         for judge in judges:
-            r = results["judges"][judge].get(key)
-            cells.append("-- & -- & -- & --" if r is None else
-                         f"{r['wins']}/{r['ties']}/{r['losses']} & {r['unknown'] + r['failed']} & "
-                         f"{pct(r['win_rate_excl_ties'])} & {pct(r['win_rate_ties_half'])}")
-        ag = results["agreement"].get(key)
-        agree = "--" if ag is None else f"{100 * ag['raw_agreement']:.0f}\\% / {ag['cohen_kappa']:.2f}"
-        n = next((results["judges"][j][key]["pairs"] for j in judges if key in results["judges"][j]), "--")
-        lines.append(f"{label} & {dataset} & {n} & " + " & ".join(cells) + f" & {agree} \\\\")
-    (ROOT / "report").mkdir(exist_ok=True)
-    (ROOT / "report" / "results_rows.tex").write_text("\n".join(lines) + "\n")
-    print("judges:", judges, "primary:", primary)
-    print("\n".join(lines))
-    print(json.dumps(results["agreement"], indent=1))
+            pj = e["per_judge"].get(judge)
+            if pj is None:
+                cells.append("-- & -- & --")
+                continue
+            sc = pj["swap_consistent"]
+            # dagger: swap pass incomplete (quota), so W/T/L covers only the pairs judged in both orders
+            mark = ("$^\\ddagger$" if not pj["swap_pass_complete"]  # no swapped judgments at all: original order only
+                    else "$^\\dagger$" if sc["n"] < pj["raw"]["n"] else "")
+            cells.append(f"{sc['wins']}/{sc['ties']}/{sc['losses']}{mark} & {pct(sc['win_rate_excl_ties'])} & {pval(sc['sign_test_p'])}")
+        pr = e["per_judge"].get(primary)
+        raw = "--" if pr is None else f"{pr['raw']['wins']}/{pr['raw']['ties']}/{pr['raw']['losses']}"
+        ij = e.get("inter_judge")
+        agree = "--" if not ij else f"{100 * ij['raw_agreement']:.0f} / {ij['cohen_kappa']:.2f}"
+        n = pr["raw"]["n"] if pr else "--"
+        rows.append(f"{label} & {dataset} & {n} & {raw} & " + " & ".join(cells) + f" & {agree} \\\\")
+        rel_cells = []
+        for judge in judges:
+            pj = e["per_judge"].get(judge)
+            rel_cells.append("-- & --" if pj is None else f"{pct(pj['position_A_share'])} & {pct(pj['swap_agreement'])}")
+        rel.append(f"{label} ({dataset.split('-')[0]}) & " + " & ".join(rel_cells) + " \\\\")
+    (ROOT / "report" / "results_rows.tex").write_text("\n".join(rows) + "\n")
+    (ROOT / "report" / "reliability_rows.tex").write_text("\n".join(rel) + "\n")
+
+    cat_lines = []
+    hh = res["comparisons"]["hh_dpo_vs_sft_hh"]["per_judge"].get(primary, {}).get("by_category", {})
+    uf = res["comparisons"]["uf_dpo_vs_sft_hh"]["per_judge"].get(primary, {}).get("by_category", {})
+    for cat in sorted(set(hh) | set(uf)):
+        def cell(d):
+            v = d.get(cat)
+            return "--" if v is None else f"{v['wins']}/{v['ties']}/{v['losses']}"
+        cat_lines.append(f"{cat.replace('_', ' ')} & {cell(hh)} & {cell(uf)} \\\\")
+    (ROOT / "report" / "category_rows.tex").write_text("\n".join(cat_lines) + "\n")
+    print("judges:", judges)
+    print("\n".join(rows))
+    print("\n".join(rel))
 
 
 if __name__ == "__main__":

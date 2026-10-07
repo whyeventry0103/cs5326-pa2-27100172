@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
 # Judge every pair file through the Kaggle model proxy from outside a notebook.
-# Usage: bash scripts/run_judging_local.sh <judge_model> <python_with_kaggle_benchmarks> <refresh_script> <env_file>
+# Usage: bash scripts/run_judging_local.sh <judge_model> <python_with_kaggle_benchmarks> <refresh_script> <env_file> [pairs_dir] [out_suffix]
 # refresh_script must re-run `kaggle benchmarks init` (proxy keys are short-lived).
 set -uo pipefail
 cd "$(dirname "$0")/.."
-MODEL=$1; PY=$2; REFRESH=$3; ENVF=$4
+MODEL=$1; PY=$2; REFRESH=$3; ENVF=$4; PAIRS_DIR=${5:-outputs/eval}; SUFFIX=${6:-}
 SLUG=${MODEL##*/}
-OUT=outputs/eval/judgments/$SLUG
+OUT=outputs/eval/judgments/$SLUG$SUFFIX
 mkdir -p "$OUT"
-for pairs in outputs/eval/*_pairs.jsonl; do
+for pairs in "$PAIRS_DIR"/*_pairs.jsonl; do
   key=$(basename "$pairs" _pairs.jsonl)
   bash "$REFRESH" > /dev/null
   echo "=== $key $(date -u +%H:%M:%SZ)"

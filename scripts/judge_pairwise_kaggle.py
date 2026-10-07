@@ -149,7 +149,7 @@ class KaggleJudge:
     so every request runs in a fresh orphan chat: batches never see each other.
     """
 
-    def __init__(self, model: str, env_file: str | None = None, llm=None):
+    def __init__(self, model: str, env_file: str | None = None, llm=None, max_tokens: int | None = 4096):
         if env_file:
             # Outside a Kaggle notebook: MODEL_PROXY_* credentials from `kaggle benchmarks init`.
             from dotenv import load_dotenv
@@ -167,11 +167,13 @@ class KaggleJudge:
         self.llm = llm
         self.name = model
         self.calls = 0
+        # A cap keeps the proxy's per-request cost estimate (based on max output length) within quota.
+        self.extra = {"max_tokens": max_tokens} if max_tokens else None
 
     def __call__(self, prompt: str) -> str:
         self.calls += 1
         with self.kbench.chats.new(f"judge-{self.calls}", orphan=True):
-            reply = self.llm.prompt(prompt, temperature=0)
+            reply = self.llm.prompt(prompt, temperature=0, extra_api_params=self.extra)
         return reply if isinstance(reply, str) else str(reply)
 
 
@@ -282,12 +284,14 @@ def main() -> None:
     ap.add_argument("--max_retries", type=int, default=3)
     ap.add_argument("--max_chars", type=int, default=6000, help="per-response truncation for the judge prompt")
     ap.add_argument("--reuse_judgments", action="store_true")
+    ap.add_argument("--max_tokens", type=int, default=4096, help="judge reply cap (0 = provider default)")
     ap.add_argument("--env_file", default=None, help="MODEL_PROXY_* .env from `kaggle b init` (non-notebook runs)")
     ap.add_argument("--failure_path", default=None)
     ap.add_argument("--summary_path", default=None)
     args = ap.parse_args()
 
-    judge = KaggleJudge(args.judge_model, args.env_file) if args.backend == "kaggle" else MockJudge(args.judge_model)
+    judge = (KaggleJudge(args.judge_model, args.env_file, max_tokens=args.max_tokens or None)
+             if args.backend == "kaggle" else MockJudge(args.judge_model))
     summary = judge_file(
         judge, args.pairs_path, args.output_path, batch_size=args.batch_size, sleep_seconds=args.sleep_seconds,
         max_retries=args.max_retries, max_chars=args.max_chars, reuse=args.reuse_judgments,

@@ -65,4 +65,23 @@ python scripts/train_lora_dpo.py --output_dir outputs/lora_dpo
 bash scripts/run_generation.sh                        # all generations + pair files
 ```
 
-Then run `notebooks/judge_kaggle.ipynb` on Kaggle against `outputs/eval/*_pairs.jsonl`.
+### Judging (Kaggle model proxy)
+
+All judging goes through Kaggle's model proxy via `kaggle_benchmarks`, in blind batches of 5,
+≥5 s apart, with retries, per-batch checkpoints and resume. Every pair is judged in both A/B orders
+(`python scripts/swap_pairs.py` writes `outputs/eval/swapped/`).
+
+```bash
+# Primary judge gemini-3.6-flash: a private Kaggle Benchmarks task with the pair files as a private dataset
+kaggle b t push pa2-pairwise-judge -f scripts/kaggle_judge_task.py -d <owner>/pa2-judge-pairs --wait
+kaggle b t run pa2-pairwise-judge -m gemini-3.6-flash --wait
+kaggle b t download pa2-pairwise-judge -m gemini-3.6-flash   # -> outputs/eval/judgments/gemini-3.6-flash/
+# (same with scripts/kaggle_judge_task_swapped.py and the swapped pair files)
+
+# Secondary judge from any machine: `kaggle b init` writes short-lived MODEL_PROXY_* credentials
+bash scripts/run_judging_local.sh google/gemini-3-flash-preview <python-with-kaggle-benchmarks> <refresh.sh> <.env> [pairs_dir] [suffix]
+
+python scripts/summarize_results.py   # report tables, agreement, position bias, examples
+```
+
+`notebooks/judge_kaggle.ipynb` is an equivalent single-notebook route for a Kaggle utility notebook.

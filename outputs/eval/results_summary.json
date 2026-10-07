@@ -1,0 +1,1278 @@
+{
+  "primary_judge": "gemini-3.6-flash",
+  "judges": [
+    "gemini-3.6-flash",
+    "gemini-3-flash-preview"
+  ],
+  "comparisons": {
+    "uf_dpo_vs_sft_alpaca": {
+      "label": "UF-DPO vs SFT",
+      "dataset": "AlpacaEval-300",
+      "per_judge": {
+        "gemini-3.6-flash": {
+          "raw": {
+            "n": 300,
+            "wins": 106,
+            "losses": 127,
+            "ties": 67,
+            "unknown": 0,
+            "win_rate_excl_ties": 0.45493562231759654,
+            "win_rate_ties_half": 0.465,
+            "sign_test_p": 0.1900004175149027
+          },
+          "swap_consistent": {
+            "n": 300,
+            "wins": 76,
+            "losses": 101,
+            "ties": 123,
+            "unknown": 0,
+            "win_rate_excl_ties": 0.4293785310734463,
+            "win_rate_ties_half": 0.4583333333333333,
+            "sign_test_p": 0.07093821456094432
+          },
+          "swap_pass_complete": true,
+          "swap_agreement": 0.73,
+          "position_A_share": 0.610062893081761,
+          "by_category": {}
+        },
+        "gemini-3-flash-preview": {
+          "raw": {
+            "n": 300,
+            "wins": 111,
+            "losses": 117,
+            "ties": 72,
+            "unknown": 0,
+            "win_rate_excl_ties": 0.4868421052631579,
+            "win_rate_ties_half": 0.49,
+            "sign_test_p": 0.7406259302520634
+          },
+          "swap_consistent": {
+            "n": 140,
+            "wins": 37,
+            "losses": 33,
+            "ties": 70,
+            "unknown": 0,
+            "win_rate_excl_ties": 0.5285714285714286,
+            "win_rate_ties_half": 0.5142857142857142,
+            "sign_test_p": 0.7202027723528613
+          },
+          "swap_pass_complete": true,
+          "swap_agreement": 0.6428571428571429,
+          "position_A_share": 0.656441717791411,
+          "by_category": {}
+        }
+      },
+      "inter_judge": {
+        "n": 140,
+        "raw_agreement": 0.6714285714285714,
+        "cohen_kappa": 0.4737272207240336
+      }
+    },
+    "hh_dpo_vs_sft_hh": {
+      "label": "HH-DPO vs SFT",
+      "dataset": "HH synthetic-300",
+      "per_judge": {
+        "gemini-3.6-flash": {
+          "raw": {
+            "n": 300,
+            "wins": 156,
+            "losses": 119,
+            "ties": 25,
+            "unknown": 0,
+            "win_rate_excl_ties": 0.5672727272727273,
+            "win_rate_ties_half": 0.5616666666666666,
+            "sign_test_p": 0.029754950751488794
+          },
+          "swap_consistent": {
+            "n": 300,
+            "wins": 118,
+            "losses": 69,
+            "ties": 113,
+            "unknown": 0,
+            "win_rate_excl_ties": 0.6310160427807486,
+            "win_rate_ties_half": 0.5816666666666667,
+            "sign_test_p": 0.0004183178608866334
+          },
+          "swap_pass_complete": true,
+          "swap_agreement": 0.6566666666666666,
+          "position_A_share": 0.6340579710144928,
+          "by_category": {
+            "benign_helpfulness": {
+              "n": 30,
+              "wins": 8,
+              "losses": 5,
+              "ties": 17,
+              "unknown": 0,
+              "win_rate_excl_ties": 0.6153846153846154,
+              "win_rate_ties_half": 0.55,
+              "sign_test_p": 0.5810546875
+            },
+            "calibration_and_uncertainty": {
+              "n": 30,
+              "wins": 10,
+              "losses": 7,
+              "ties": 13,
+              "unknown": 0,
+              "win_rate_excl_ties": 0.5882352941176471,
+              "win_rate_ties_half": 0.55,
+              "sign_test_p": 0.629058837890625
+            },
+            "cyber_abuse": {
+              "n": 30,
+              "wins": 16,
+              "losses": 3,
+              "ties": 11,
+              "unknown": 0,
+              "win_rate_excl_ties": 0.8421052631578947,
+              "win_rate_ties_half": 0.7166666666666667,
+              "sign_test_p": 0.004425048828125
+            },
+            "harmful_instructions": {
+              "n": 30,
+              "wins": 13,
+              "losses": 4,
+              "ties": 13,
+              "unknown": 0,
+              "win_rate_excl_ties": 0.7647058823529411,
+              "win_rate_ties_half": 0.65,
+              "sign_test_p": 0.049041748046875
+            },
+            "hate_or_harassment": {
+              "n": 30,
+              "wins": 12,
+              "losses": 11,
+              "ties": 7,
+              "unknown": 0,
+              "win_rate_excl_ties": 0.5217391304347826,
+              "win_rate_ties_half": 0.5166666666666667,
+              "sign_test_p": 1.0
+            },
+            "legal_financial_safety": {
+              "n": 30,
+              "wins": 14,
+              "losses": 9,
+              "ties": 7,
+              "unknown": 0,
+              "win_rate_excl_ties": 0.6086956521739131,
+              "win_rate_ties_half": 0.5833333333333334,
+              "sign_test_p": 0.4048728942871094
+            },
+            "medical_safety": {
+              "n": 30,
+              "wins": 14,
+              "losses": 8,
+              "ties": 8,
+              "unknown": 0,
+              "win_rate_excl_ties": 0.6363636363636364,
+              "win_rate_ties_half": 0.6,
+              "sign_test_p": 0.28627872467041016
+            },
+            "privacy_and_doxxing": {
+              "n": 30,
+              "wins": 9,
+              "losses": 5,
+              "ties": 16,
+              "unknown": 0,
+              "win_rate_excl_ties": 0.6428571428571429,
+              "win_rate_ties_half": 0.5666666666666667,
+              "sign_test_p": 0.4239501953125
+            },
+            "safe_transformation": {
+              "n": 30,
+              "wins": 10,
+              "losses": 8,
+              "ties": 12,
+              "unknown": 0,
+              "win_rate_excl_ties": 0.5555555555555556,
+              "win_rate_ties_half": 0.5333333333333333,
+              "sign_test_p": 0.8145294189453125
+            },
+            "self_harm_support": {
+              "n": 30,
+              "wins": 12,
+              "losses": 9,
+              "ties": 9,
+              "unknown": 0,
+              "win_rate_excl_ties": 0.5714285714285714,
+              "win_rate_ties_half": 0.55,
+              "sign_test_p": 0.6636238098144531
+            }
+          }
+        },
+        "gemini-3-flash-preview": {
+          "raw": {
+            "n": 300,
+            "wins": 156,
+            "losses": 99,
+            "ties": 45,
+            "unknown": 0,
+            "win_rate_excl_ties": 0.611764705882353,
+            "win_rate_ties_half": 0.595,
+            "sign_test_p": 0.0004314918391568591
+          },
+          "swap_consistent": {
+            "n": 300,
+            "wins": 103,
+            "losses": 63,
+            "ties": 134,
+            "unknown": 0,
+            "win_rate_excl_ties": 0.6204819277108434,
+            "win_rate_ties_half": 0.5666666666666667,
+            "sign_test_p": 0.00236860841746799
+          },
+          "swap_pass_complete": true,
+          "swap_agreement": 0.59,
+          "position_A_share": 0.63671875,
+          "by_category": {
+            "benign_helpfulness": {
+              "n": 30,
+              "wins": 8,
+              "losses": 9,
+              "ties": 13,
+              "unknown": 0,
+              "win_rate_excl_ties": 0.47058823529411764,
+              "win_rate_ties_half": 0.48333333333333334,
+              "sign_test_p": 1.0
+            },
+            "calibration_and_uncertainty": {
+              "n": 30,
+              "wins": 10,
+              "losses": 8,
+              "ties": 12,
+              "unknown": 0,
+              "win_rate_excl_ties": 0.5555555555555556,
+              "win_rate_ties_half": 0.5333333333333333,
+              "sign_test_p": 0.8145294189453125
+            },
+            "cyber_abuse": {
+              "n": 30,
+              "wins": 17,
+              "losses": 5,
+              "ties": 8,
+              "unknown": 0,
+              "win_rate_excl_ties": 0.7727272727272727,
+              "win_rate_ties_half": 0.7,
+              "sign_test_p": 0.01690053939819336
+            },
+            "harmful_instructions": {
+              "n": 30,
+              "wins": 5,
+              "losses": 6,
+              "ties": 19,
+              "unknown": 0,
+              "win_rate_excl_ties": 0.45454545454545453,
+              "win_rate_ties_half": 0.48333333333333334,
+              "sign_test_p": 1.0
+            },
+            "hate_or_harassment": {
+              "n": 30,
+              "wins": 11,
+              "losses": 8,
+              "ties": 11,
+              "unknown": 0,
+              "win_rate_excl_ties": 0.5789473684210527,
+              "win_rate_ties_half": 0.55,
+              "sign_test_p": 0.6476058959960938
+            },
+            "legal_financial_safety": {
+              "n": 30,
+              "wins": 13,
+              "losses": 7,
+              "ties": 10,
+              "unknown": 0,
+              "win_rate_excl_ties": 0.65,
+              "win_rate_ties_half": 0.6,
+              "sign_test_p": 0.26317596435546875
+            },
+            "medical_safety": {
+              "n": 30,
+              "wins": 14,
+              "losses": 6,
+              "ties": 10,
+              "unknown": 0,
+              "win_rate_excl_ties": 0.7,
+              "win_rate_ties_half": 0.6333333333333333,
+              "sign_test_p": 0.11531829833984375
+            },
+            "privacy_and_doxxing": {
+              "n": 30,
+              "wins": 8,
+              "losses": 5,
+              "ties": 17,
+              "unknown": 0,
+              "win_rate_excl_ties": 0.6153846153846154,
+              "win_rate_ties_half": 0.55,
+              "sign_test_p": 0.5810546875
+            },
+            "safe_transformation": {
+              "n": 30,
+              "wins": 10,
+              "losses": 7,
+              "ties": 13,
+              "unknown": 0,
+              "win_rate_excl_ties": 0.5882352941176471,
+              "win_rate_ties_half": 0.55,
+              "sign_test_p": 0.629058837890625
+            },
+            "self_harm_support": {
+              "n": 30,
+              "wins": 7,
+              "losses": 2,
+              "ties": 21,
+              "unknown": 0,
+              "win_rate_excl_ties": 0.7777777777777778,
+              "win_rate_ties_half": 0.5833333333333334,
+              "sign_test_p": 0.1796875
+            }
+          }
+        }
+      },
+      "inter_judge": {
+        "n": 300,
+        "raw_agreement": 0.6733333333333333,
+        "cohen_kappa": 0.4962043970731875
+      }
+    },
+    "hh_dpo_vs_sft_alpaca": {
+      "label": "HH-DPO vs SFT",
+      "dataset": "AlpacaEval-300",
+      "per_judge": {
+        "gemini-3.6-flash": {
+          "raw": {
+            "n": 300,
+            "wins": 113,
+            "losses": 113,
+            "ties": 74,
+            "unknown": 0,
+            "win_rate_excl_ties": 0.5,
+            "win_rate_ties_half": 0.5,
+            "sign_test_p": 1.0
+          },
+          "swap_consistent": {
+            "n": 300,
+            "wins": 73,
+            "losses": 72,
+            "ties": 155,
+            "unknown": 0,
+            "win_rate_excl_ties": 0.503448275862069,
+            "win_rate_ties_half": 0.5016666666666667,
+            "sign_test_p": 1.0
+          },
+          "swap_pass_complete": true,
+          "swap_agreement": 0.6466666666666666,
+          "position_A_share": 0.6488888888888888,
+          "by_category": {}
+        },
+        "gemini-3-flash-preview": {
+          "raw": {
+            "n": 300,
+            "wins": 110,
+            "losses": 101,
+            "ties": 89,
+            "unknown": 0,
+            "win_rate_excl_ties": 0.5213270142180095,
+            "win_rate_ties_half": 0.515,
+            "sign_test_p": 0.5819149929677933
+          },
+          "swap_consistent": {
+            "n": 300,
+            "wins": 74,
+            "losses": 63,
+            "ties": 163,
+            "unknown": 0,
+            "win_rate_excl_ties": 0.5401459854014599,
+            "win_rate_ties_half": 0.5183333333333333,
+            "sign_test_p": 0.3929875546202084
+          },
+          "swap_pass_complete": true,
+          "swap_agreement": 0.66,
+          "position_A_share": 0.6391509433962265,
+          "by_category": {}
+        }
+      },
+      "inter_judge": {
+        "n": 300,
+        "raw_agreement": 0.73,
+        "cohen_kappa": 0.5565450663357483
+      }
+    },
+    "uf_dpo_vs_sft_hh": {
+      "label": "UF-DPO vs SFT",
+      "dataset": "HH synthetic-300",
+      "per_judge": {
+        "gemini-3.6-flash": {
+          "raw": {
+            "n": 300,
+            "wins": 130,
+            "losses": 150,
+            "ties": 20,
+            "unknown": 0,
+            "win_rate_excl_ties": 0.4642857142857143,
+            "win_rate_ties_half": 0.4666666666666667,
+            "sign_test_p": 0.2561392626710192
+          },
+          "swap_consistent": {
+            "n": 215,
+            "wins": 69,
+            "losses": 83,
+            "ties": 63,
+            "unknown": 0,
+            "win_rate_excl_ties": 0.45394736842105265,
+            "win_rate_ties_half": 0.46744186046511627,
+            "sign_test_p": 0.2916544513344336
+          },
+          "swap_pass_complete": true,
+          "swap_agreement": 0.7348837209302326,
+          "position_A_share": 0.6131687242798354,
+          "by_category": {
+            "benign_helpfulness": {
+              "n": 22,
+              "wins": 7,
+              "losses": 7,
+              "ties": 8,
+              "unknown": 0,
+              "win_rate_excl_ties": 0.5,
+              "win_rate_ties_half": 0.5,
+              "sign_test_p": 1.0
+            },
+            "calibration_and_uncertainty": {
+              "n": 22,
+              "wins": 7,
+              "losses": 9,
+              "ties": 6,
+              "unknown": 0,
+              "win_rate_excl_ties": 0.4375,
+              "win_rate_ties_half": 0.45454545454545453,
+              "sign_test_p": 0.803619384765625
+            },
+            "cyber_abuse": {
+              "n": 25,
+              "wins": 9,
+              "losses": 7,
+              "ties": 9,
+              "unknown": 0,
+              "win_rate_excl_ties": 0.5625,
+              "win_rate_ties_half": 0.54,
+              "sign_test_p": 0.803619384765625
+            },
+            "harmful_instructions": {
+              "n": 21,
+              "wins": 6,
+              "losses": 11,
+              "ties": 4,
+              "unknown": 0,
+              "win_rate_excl_ties": 0.35294117647058826,
+              "win_rate_ties_half": 0.38095238095238093,
+              "sign_test_p": 0.332305908203125
+            },
+            "hate_or_harassment": {
+              "n": 18,
+              "wins": 4,
+              "losses": 10,
+              "ties": 4,
+              "unknown": 0,
+              "win_rate_excl_ties": 0.2857142857142857,
+              "win_rate_ties_half": 0.3333333333333333,
+              "sign_test_p": 0.1795654296875
+            },
+            "legal_financial_safety": {
+              "n": 22,
+              "wins": 2,
+              "losses": 9,
+              "ties": 11,
+              "unknown": 0,
+              "win_rate_excl_ties": 0.18181818181818182,
+              "win_rate_ties_half": 0.3409090909090909,
+              "sign_test_p": 0.0654296875
+            },
+            "medical_safety": {
+              "n": 17,
+              "wins": 6,
+              "losses": 7,
+              "ties": 4,
+              "unknown": 0,
+              "win_rate_excl_ties": 0.46153846153846156,
+              "win_rate_ties_half": 0.47058823529411764,
+              "sign_test_p": 1.0
+            },
+            "privacy_and_doxxing": {
+              "n": 19,
+              "wins": 7,
+              "losses": 6,
+              "ties": 6,
+              "unknown": 0,
+              "win_rate_excl_ties": 0.5384615384615384,
+              "win_rate_ties_half": 0.5263157894736842,
+              "sign_test_p": 1.0
+            },
+            "safe_transformation": {
+              "n": 23,
+              "wins": 5,
+              "losses": 7,
+              "ties": 11,
+              "unknown": 0,
+              "win_rate_excl_ties": 0.4166666666666667,
+              "win_rate_ties_half": 0.45652173913043476,
+              "sign_test_p": 0.7744140625
+            },
+            "self_harm_support": {
+              "n": 26,
+              "wins": 16,
+              "losses": 10,
+              "ties": 0,
+              "unknown": 0,
+              "win_rate_excl_ties": 0.6153846153846154,
+              "win_rate_ties_half": 0.6153846153846154,
+              "sign_test_p": 0.32693958282470703
+            }
+          }
+        },
+        "gemini-3-flash-preview": {
+          "raw": {
+            "n": 300,
+            "wins": 123,
+            "losses": 134,
+            "ties": 43,
+            "unknown": 0,
+            "win_rate_excl_ties": 0.4785992217898833,
+            "win_rate_ties_half": 0.4816666666666667,
+            "sign_test_p": 0.5328521132879824
+          },
+          "swap_consistent": {
+            "n": 300,
+            "wins": 123,
+            "losses": 134,
+            "ties": 43,
+            "unknown": 0,
+            "win_rate_excl_ties": 0.4785992217898833,
+            "win_rate_ties_half": 0.4816666666666667,
+            "sign_test_p": 0.5328521132879824
+          },
+          "swap_pass_complete": false,
+          "swap_agreement": null,
+          "position_A_share": 0.688715953307393,
+          "by_category": {
+            "benign_helpfulness": {
+              "n": 30,
+              "wins": 16,
+              "losses": 14,
+              "ties": 0,
+              "unknown": 0,
+              "win_rate_excl_ties": 0.5333333333333333,
+              "win_rate_ties_half": 0.5333333333333333,
+              "sign_test_p": 0.855535551905632
+            },
+            "calibration_and_uncertainty": {
+              "n": 30,
+              "wins": 13,
+              "losses": 15,
+              "ties": 2,
+              "unknown": 0,
+              "win_rate_excl_ties": 0.4642857142857143,
+              "win_rate_ties_half": 0.4666666666666667,
+              "sign_test_p": 0.8505540192127228
+            },
+            "cyber_abuse": {
+              "n": 30,
+              "wins": 10,
+              "losses": 14,
+              "ties": 6,
+              "unknown": 0,
+              "win_rate_excl_ties": 0.4166666666666667,
+              "win_rate_ties_half": 0.43333333333333335,
+              "sign_test_p": 0.5412561893463135
+            },
+            "harmful_instructions": {
+              "n": 30,
+              "wins": 6,
+              "losses": 14,
+              "ties": 10,
+              "unknown": 0,
+              "win_rate_excl_ties": 0.3,
+              "win_rate_ties_half": 0.36666666666666664,
+              "sign_test_p": 0.11531829833984375
+            },
+            "hate_or_harassment": {
+              "n": 30,
+              "wins": 11,
+              "losses": 13,
+              "ties": 6,
+              "unknown": 0,
+              "win_rate_excl_ties": 0.4583333333333333,
+              "win_rate_ties_half": 0.4666666666666667,
+              "sign_test_p": 0.8388197422027588
+            },
+            "legal_financial_safety": {
+              "n": 30,
+              "wins": 12,
+              "losses": 14,
+              "ties": 4,
+              "unknown": 0,
+              "win_rate_excl_ties": 0.46153846153846156,
+              "win_rate_ties_half": 0.4666666666666667,
+              "sign_test_p": 0.8450189828872681
+            },
+            "medical_safety": {
+              "n": 30,
+              "wins": 12,
+              "losses": 13,
+              "ties": 5,
+              "unknown": 0,
+              "win_rate_excl_ties": 0.48,
+              "win_rate_ties_half": 0.48333333333333334,
+              "sign_test_p": 1.0
+            },
+            "privacy_and_doxxing": {
+              "n": 30,
+              "wins": 13,
+              "losses": 11,
+              "ties": 6,
+              "unknown": 0,
+              "win_rate_excl_ties": 0.5416666666666666,
+              "win_rate_ties_half": 0.5333333333333333,
+              "sign_test_p": 0.8388197422027588
+            },
+            "safe_transformation": {
+              "n": 30,
+              "wins": 13,
+              "losses": 13,
+              "ties": 4,
+              "unknown": 0,
+              "win_rate_excl_ties": 0.5,
+              "win_rate_ties_half": 0.5,
+              "sign_test_p": 1.0
+            },
+            "self_harm_support": {
+              "n": 30,
+              "wins": 17,
+              "losses": 13,
+              "ties": 0,
+              "unknown": 0,
+              "win_rate_excl_ties": 0.5666666666666667,
+              "win_rate_ties_half": 0.5666666666666667,
+              "sign_test_p": 0.584664711728692
+            }
+          }
+        }
+      },
+      "inter_judge": {
+        "n": 215,
+        "raw_agreement": 0.6511627906976745,
+        "cohen_kappa": 0.46588274263000995
+      }
+    },
+    "persona_lora_vs_base_style": {
+      "label": "LoRA-DPO vs base: style",
+      "dataset": "Persona-40",
+      "per_judge": {
+        "gemini-3.6-flash": {
+          "raw": {
+            "n": 40,
+            "wins": 37,
+            "losses": 1,
+            "ties": 2,
+            "unknown": 0,
+            "win_rate_excl_ties": 0.9736842105263158,
+            "win_rate_ties_half": 0.95,
+            "sign_test_p": 2.837623469531536e-10
+          },
+          "swap_consistent": {
+            "n": 40,
+            "wins": 35,
+            "losses": 1,
+            "ties": 4,
+            "unknown": 0,
+            "win_rate_excl_ties": 0.9722222222222222,
+            "win_rate_ties_half": 0.925,
+            "sign_test_p": 1.076841726899147e-09
+          },
+          "swap_pass_complete": true,
+          "swap_agreement": 0.925,
+          "position_A_share": 0.5064935064935064,
+          "by_category": {
+            "coding": {
+              "n": 10,
+              "wins": 10,
+              "losses": 0,
+              "ties": 0,
+              "unknown": 0,
+              "win_rate_excl_ties": 1.0,
+              "win_rate_ties_half": 1.0,
+              "sign_test_p": 0.001953125
+            },
+            "cooking": {
+              "n": 10,
+              "wins": 9,
+              "losses": 0,
+              "ties": 1,
+              "unknown": 0,
+              "win_rate_excl_ties": 1.0,
+              "win_rate_ties_half": 0.95,
+              "sign_test_p": 0.00390625
+            },
+            "general_help": {
+              "n": 10,
+              "wins": 7,
+              "losses": 1,
+              "ties": 2,
+              "unknown": 0,
+              "win_rate_excl_ties": 0.875,
+              "win_rate_ties_half": 0.8,
+              "sign_test_p": 0.0703125
+            },
+            "safety_sensitive": {
+              "n": 10,
+              "wins": 9,
+              "losses": 0,
+              "ties": 1,
+              "unknown": 0,
+              "win_rate_excl_ties": 1.0,
+              "win_rate_ties_half": 0.95,
+              "sign_test_p": 0.00390625
+            }
+          }
+        },
+        "gemini-3-flash-preview": {
+          "raw": {
+            "n": 40,
+            "wins": 34,
+            "losses": 2,
+            "ties": 4,
+            "unknown": 0,
+            "win_rate_excl_ties": 0.9444444444444444,
+            "win_rate_ties_half": 0.9,
+            "sign_test_p": 1.941225491464138e-08
+          },
+          "swap_consistent": {
+            "n": 40,
+            "wins": 34,
+            "losses": 2,
+            "ties": 4,
+            "unknown": 0,
+            "win_rate_excl_ties": 0.9444444444444444,
+            "win_rate_ties_half": 0.9,
+            "sign_test_p": 1.941225491464138e-08
+          },
+          "swap_pass_complete": true,
+          "swap_agreement": 0.925,
+          "position_A_share": 0.52,
+          "by_category": {
+            "coding": {
+              "n": 10,
+              "wins": 10,
+              "losses": 0,
+              "ties": 0,
+              "unknown": 0,
+              "win_rate_excl_ties": 1.0,
+              "win_rate_ties_half": 1.0,
+              "sign_test_p": 0.001953125
+            },
+            "cooking": {
+              "n": 10,
+              "wins": 10,
+              "losses": 0,
+              "ties": 0,
+              "unknown": 0,
+              "win_rate_excl_ties": 1.0,
+              "win_rate_ties_half": 1.0,
+              "sign_test_p": 0.001953125
+            },
+            "general_help": {
+              "n": 10,
+              "wins": 7,
+              "losses": 2,
+              "ties": 1,
+              "unknown": 0,
+              "win_rate_excl_ties": 0.7777777777777778,
+              "win_rate_ties_half": 0.75,
+              "sign_test_p": 0.1796875
+            },
+            "safety_sensitive": {
+              "n": 10,
+              "wins": 7,
+              "losses": 0,
+              "ties": 3,
+              "unknown": 0,
+              "win_rate_excl_ties": 1.0,
+              "win_rate_ties_half": 0.85,
+              "sign_test_p": 0.015625
+            }
+          }
+        }
+      },
+      "inter_judge": {
+        "n": 40,
+        "raw_agreement": 0.9,
+        "cohen_kappa": 0.5918367346938777
+      }
+    },
+    "persona_lora_vs_base_quality": {
+      "label": "LoRA-DPO vs base: substance",
+      "dataset": "Persona-40",
+      "per_judge": {
+        "gemini-3.6-flash": {
+          "raw": {
+            "n": 40,
+            "wins": 22,
+            "losses": 18,
+            "ties": 0,
+            "unknown": 0,
+            "win_rate_excl_ties": 0.55,
+            "win_rate_ties_half": 0.55,
+            "sign_test_p": 0.6358280026288412
+          },
+          "swap_consistent": {
+            "n": 40,
+            "wins": 19,
+            "losses": 16,
+            "ties": 5,
+            "unknown": 0,
+            "win_rate_excl_ties": 0.5428571428571428,
+            "win_rate_ties_half": 0.5375,
+            "sign_test_p": 0.7358788008568808
+          },
+          "swap_pass_complete": true,
+          "swap_agreement": 0.875,
+          "position_A_share": 0.5316455696202531,
+          "by_category": {
+            "coding": {
+              "n": 10,
+              "wins": 9,
+              "losses": 0,
+              "ties": 1,
+              "unknown": 0,
+              "win_rate_excl_ties": 1.0,
+              "win_rate_ties_half": 0.95,
+              "sign_test_p": 0.00390625
+            },
+            "cooking": {
+              "n": 10,
+              "wins": 4,
+              "losses": 4,
+              "ties": 2,
+              "unknown": 0,
+              "win_rate_excl_ties": 0.5,
+              "win_rate_ties_half": 0.5,
+              "sign_test_p": 1.0
+            },
+            "general_help": {
+              "n": 10,
+              "wins": 2,
+              "losses": 7,
+              "ties": 1,
+              "unknown": 0,
+              "win_rate_excl_ties": 0.2222222222222222,
+              "win_rate_ties_half": 0.25,
+              "sign_test_p": 0.1796875
+            },
+            "safety_sensitive": {
+              "n": 10,
+              "wins": 4,
+              "losses": 5,
+              "ties": 1,
+              "unknown": 0,
+              "win_rate_excl_ties": 0.4444444444444444,
+              "win_rate_ties_half": 0.45,
+              "sign_test_p": 1.0
+            }
+          }
+        },
+        "gemini-3-flash-preview": {
+          "raw": {
+            "n": 40,
+            "wins": 22,
+            "losses": 16,
+            "ties": 2,
+            "unknown": 0,
+            "win_rate_excl_ties": 0.5789473684210527,
+            "win_rate_ties_half": 0.575,
+            "sign_test_p": 0.417692190836533
+          },
+          "swap_consistent": {
+            "n": 30,
+            "wins": 16,
+            "losses": 12,
+            "ties": 2,
+            "unknown": 0,
+            "win_rate_excl_ties": 0.5714285714285714,
+            "win_rate_ties_half": 0.5666666666666667,
+            "sign_test_p": 0.5715881884098053
+          },
+          "swap_pass_complete": true,
+          "swap_agreement": 0.9333333333333333,
+          "position_A_share": 0.5147058823529411,
+          "by_category": {
+            "coding": {
+              "n": 10,
+              "wins": 8,
+              "losses": 0,
+              "ties": 2,
+              "unknown": 0,
+              "win_rate_excl_ties": 1.0,
+              "win_rate_ties_half": 0.9,
+              "sign_test_p": 0.0078125
+            },
+            "general_help": {
+              "n": 10,
+              "wins": 2,
+              "losses": 8,
+              "ties": 0,
+              "unknown": 0,
+              "win_rate_excl_ties": 0.2,
+              "win_rate_ties_half": 0.2,
+              "sign_test_p": 0.109375
+            },
+            "safety_sensitive": {
+              "n": 10,
+              "wins": 6,
+              "losses": 4,
+              "ties": 0,
+              "unknown": 0,
+              "win_rate_excl_ties": 0.6,
+              "win_rate_ties_half": 0.6,
+              "sign_test_p": 0.75390625
+            }
+          }
+        }
+      },
+      "inter_judge": {
+        "n": 30,
+        "raw_agreement": 0.8666666666666667,
+        "cohen_kappa": 0.7647058823529412
+      }
+    },
+    "persona_lora_lr1e-4_vs_base_style": {
+      "label": "lr=1e-4 ablation: style",
+      "dataset": "Persona-40",
+      "per_judge": {
+        "gemini-3.6-flash": {
+          "raw": {
+            "n": 40,
+            "wins": 25,
+            "losses": 1,
+            "ties": 14,
+            "unknown": 0,
+            "win_rate_excl_ties": 0.9615384615384616,
+            "win_rate_ties_half": 0.8,
+            "sign_test_p": 8.046627044677734e-07
+          },
+          "swap_consistent": {
+            "n": 40,
+            "wins": 23,
+            "losses": 1,
+            "ties": 16,
+            "unknown": 0,
+            "win_rate_excl_ties": 0.9583333333333334,
+            "win_rate_ties_half": 0.775,
+            "sign_test_p": 2.9802322387695312e-06
+          },
+          "swap_pass_complete": true,
+          "swap_agreement": 0.925,
+          "position_A_share": 0.46153846153846156,
+          "by_category": {
+            "coding": {
+              "n": 10,
+              "wins": 9,
+              "losses": 0,
+              "ties": 1,
+              "unknown": 0,
+              "win_rate_excl_ties": 1.0,
+              "win_rate_ties_half": 0.95,
+              "sign_test_p": 0.00390625
+            },
+            "cooking": {
+              "n": 10,
+              "wins": 9,
+              "losses": 1,
+              "ties": 0,
+              "unknown": 0,
+              "win_rate_excl_ties": 0.9,
+              "win_rate_ties_half": 0.9,
+              "sign_test_p": 0.021484375
+            },
+            "general_help": {
+              "n": 10,
+              "wins": 0,
+              "losses": 0,
+              "ties": 10,
+              "unknown": 0,
+              "win_rate_excl_ties": null,
+              "win_rate_ties_half": 0.5,
+              "sign_test_p": null
+            },
+            "safety_sensitive": {
+              "n": 10,
+              "wins": 5,
+              "losses": 0,
+              "ties": 5,
+              "unknown": 0,
+              "win_rate_excl_ties": 1.0,
+              "win_rate_ties_half": 0.75,
+              "sign_test_p": 0.0625
+            }
+          }
+        },
+        "gemini-3-flash-preview": {
+          "raw": {
+            "n": 40,
+            "wins": 29,
+            "losses": 3,
+            "ties": 8,
+            "unknown": 0,
+            "win_rate_excl_ties": 0.90625,
+            "win_rate_ties_half": 0.825,
+            "sign_test_p": 2.5560148060321808e-06
+          },
+          "swap_consistent": {
+            "n": 40,
+            "wins": 23,
+            "losses": 0,
+            "ties": 17,
+            "unknown": 0,
+            "win_rate_excl_ties": 1.0,
+            "win_rate_ties_half": 0.7875,
+            "sign_test_p": 2.384185791015625e-07
+          },
+          "swap_pass_complete": true,
+          "swap_agreement": 0.775,
+          "position_A_share": 0.5789473684210527,
+          "by_category": {
+            "coding": {
+              "n": 10,
+              "wins": 9,
+              "losses": 0,
+              "ties": 1,
+              "unknown": 0,
+              "win_rate_excl_ties": 1.0,
+              "win_rate_ties_half": 0.95,
+              "sign_test_p": 0.00390625
+            },
+            "cooking": {
+              "n": 10,
+              "wins": 9,
+              "losses": 0,
+              "ties": 1,
+              "unknown": 0,
+              "win_rate_excl_ties": 1.0,
+              "win_rate_ties_half": 0.95,
+              "sign_test_p": 0.00390625
+            },
+            "general_help": {
+              "n": 10,
+              "wins": 0,
+              "losses": 0,
+              "ties": 10,
+              "unknown": 0,
+              "win_rate_excl_ties": null,
+              "win_rate_ties_half": 0.5,
+              "sign_test_p": null
+            },
+            "safety_sensitive": {
+              "n": 10,
+              "wins": 5,
+              "losses": 0,
+              "ties": 5,
+              "unknown": 0,
+              "win_rate_excl_ties": 1.0,
+              "win_rate_ties_half": 0.75,
+              "sign_test_p": 0.0625
+            }
+          }
+        }
+      },
+      "inter_judge": {
+        "n": 40,
+        "raw_agreement": 0.925,
+        "cohen_kappa": 0.8498122653316647
+      }
+    },
+    "persona_lora_lr1e-4_vs_base_quality": {
+      "label": "lr=1e-4 ablation: substance",
+      "dataset": "Persona-40",
+      "per_judge": {
+        "gemini-3.6-flash": {
+          "raw": {
+            "n": 40,
+            "wins": 15,
+            "losses": 23,
+            "ties": 2,
+            "unknown": 0,
+            "win_rate_excl_ties": 0.39473684210526316,
+            "win_rate_ties_half": 0.4,
+            "sign_test_p": 0.2558750795433298
+          },
+          "swap_consistent": {
+            "n": 40,
+            "wins": 13,
+            "losses": 19,
+            "ties": 8,
+            "unknown": 0,
+            "win_rate_excl_ties": 0.40625,
+            "win_rate_ties_half": 0.425,
+            "sign_test_p": 0.37708558747544885
+          },
+          "swap_pass_complete": true,
+          "swap_agreement": 0.8,
+          "position_A_share": 0.5641025641025641,
+          "by_category": {
+            "coding": {
+              "n": 10,
+              "wins": 5,
+              "losses": 2,
+              "ties": 3,
+              "unknown": 0,
+              "win_rate_excl_ties": 0.7142857142857143,
+              "win_rate_ties_half": 0.65,
+              "sign_test_p": 0.453125
+            },
+            "cooking": {
+              "n": 10,
+              "wins": 1,
+              "losses": 5,
+              "ties": 4,
+              "unknown": 0,
+              "win_rate_excl_ties": 0.16666666666666666,
+              "win_rate_ties_half": 0.3,
+              "sign_test_p": 0.21875
+            },
+            "general_help": {
+              "n": 10,
+              "wins": 4,
+              "losses": 6,
+              "ties": 0,
+              "unknown": 0,
+              "win_rate_excl_ties": 0.4,
+              "win_rate_ties_half": 0.4,
+              "sign_test_p": 0.75390625
+            },
+            "safety_sensitive": {
+              "n": 10,
+              "wins": 3,
+              "losses": 6,
+              "ties": 1,
+              "unknown": 0,
+              "win_rate_excl_ties": 0.3333333333333333,
+              "win_rate_ties_half": 0.35,
+              "sign_test_p": 0.5078125
+            }
+          }
+        },
+        "gemini-3-flash-preview": {
+          "raw": {
+            "n": 40,
+            "wins": 13,
+            "losses": 26,
+            "ties": 1,
+            "unknown": 0,
+            "win_rate_excl_ties": 0.3333333333333333,
+            "win_rate_ties_half": 0.3375,
+            "sign_test_p": 0.05325191409792751
+          },
+          "swap_consistent": {
+            "n": 40,
+            "wins": 12,
+            "losses": 23,
+            "ties": 5,
+            "unknown": 0,
+            "win_rate_excl_ties": 0.34285714285714286,
+            "win_rate_ties_half": 0.3625,
+            "sign_test_p": 0.0895310789346695
+          },
+          "swap_pass_complete": true,
+          "swap_agreement": 0.875,
+          "position_A_share": 0.4675324675324675,
+          "by_category": {
+            "coding": {
+              "n": 10,
+              "wins": 6,
+              "losses": 4,
+              "ties": 0,
+              "unknown": 0,
+              "win_rate_excl_ties": 0.6,
+              "win_rate_ties_half": 0.6,
+              "sign_test_p": 0.75390625
+            },
+            "cooking": {
+              "n": 10,
+              "wins": 2,
+              "losses": 5,
+              "ties": 3,
+              "unknown": 0,
+              "win_rate_excl_ties": 0.2857142857142857,
+              "win_rate_ties_half": 0.35,
+              "sign_test_p": 0.453125
+            },
+            "general_help": {
+              "n": 10,
+              "wins": 1,
+              "losses": 8,
+              "ties": 1,
+              "unknown": 0,
+              "win_rate_excl_ties": 0.1111111111111111,
+              "win_rate_ties_half": 0.15,
+              "sign_test_p": 0.0390625
+            },
+            "safety_sensitive": {
+              "n": 10,
+              "wins": 3,
+              "losses": 6,
+              "ties": 1,
+              "unknown": 0,
+              "win_rate_excl_ties": 0.3333333333333333,
+              "win_rate_ties_half": 0.35,
+              "sign_test_p": 0.5078125
+            }
+          }
+        }
+      },
+      "inter_judge": {
+        "n": 40,
+        "raw_agreement": 0.725,
+        "cohen_kappa": 0.5449844881075491
+      }
+    }
+  },
+  "reliability": {},
+  "generations": {
+    "alpaca_base": {
+      "mean_words": 275.7266666666667,
+      "hit_max_new_tokens": 0.49666666666666665
+    },
+    "alpaca_dpo_hh": {
+      "mean_words": 144.95333333333335,
+      "hit_max_new_tokens": 0.01
+    },
+    "alpaca_dpo_uf": {
+      "mean_words": 213.94666666666666,
+      "hit_max_new_tokens": 0.08
+    },
+    "alpaca_sft": {
+      "mean_words": 152.75,
+      "hit_max_new_tokens": 0.016666666666666666
+    },
+    "hh_base": {
+      "mean_words": 256.67333333333335,
+      "hit_max_new_tokens": 0.37
+    },
+    "hh_dpo_hh": {
+      "mean_words": 147.68666666666667,
+      "hit_max_new_tokens": 0.013333333333333334
+    },
+    "hh_dpo_uf": {
+      "mean_words": 210.66666666666666,
+      "hit_max_new_tokens": 0.02
+    },
+    "hh_sft": {
+      "mean_words": 154.63666666666666,
+      "hit_max_new_tokens": 0.023333333333333334
+    },
+    "persona_lora_dpo": {
+      "mean_words": 34.925,
+      "hit_max_new_tokens": 0.025
+    },
+    "persona_smollm2_base": {
+      "mean_words": 112.325,
+      "hit_max_new_tokens": 0.4
+    }
+  }
+}
