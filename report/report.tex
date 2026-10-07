@@ -9,7 +9,7 @@
 \setlength{\parskip}{3pt}\setlength{\parindent}{0pt}
 
 \title{\vspace{-2em}Instruction Tuning and DPO on Qwen2.5-0.5B\\\large CS5326 Programming Assignment 2}
-\author{\RES{Name}, \RES{Roll no.}}
+\author{Roll no. 27100172}
 \date{October 2026}
 
 \begin{document}
@@ -17,7 +17,7 @@
 \vspace{-1.5em}
 
 \section{Repository, Models, and Data}
-\textbf{Code:} \url{https://github.com/whyeventry0103/cs5326-pa2-27100201} (private until submission).
+\textbf{Code:} \url{https://github.com/whyeventry0103/cs5326-pa2-27100172} (private until submission).
 SFT and both DPO runs are hand-written loops in \texttt{src/alignment} and \texttt{scripts/train\_\{sft,dpo\}.py}; no HF \texttt{Trainer} or TRL is used for them. \texttt{submission\_adapter.py} wraps this code and passes the public tests plus 14 additional edge-case tests (\texttt{tests/test\_alignment\_core.py}).
 
 \textbf{Base checkpoints.} \texttt{Qwen/Qwen2.5-0.5B} (SFT, DPO); \texttt{HuggingFaceTB/SmolLM2-360M-Instruct} (LoRA-DPO).
@@ -87,7 +87,13 @@ Selected ckpt & best val loss (step 937) & best val reward acc. (step \RES{}) & 
 \caption{From-scratch DPO. Train curves are EMA-smoothed per-step means over 32 pairs; validation points are on the full 1k pairs; dashed lines mark the selected checkpoints.}
 \label{fig:dpo}
 \end{figure}
-\RES{training behaviour paragraph}
+\textbf{SFT} (38 min). Validation NLL fell from 1.377 to 1.362 in the first 50 steps, \emph{rose} to 1.373 around the peak learning rate (steps 100--200), then decreased monotonically as the cosine schedule decayed, ending at 1.314. Best and final coincide (step 937), so there is no sign of overfitting in one epoch. Per-batch training loss is noisy (1.1--1.6 for 32 examples; median pre-clip gradient norm 4.0), so the EMA is shown. The early bump suggests $2\times10^{-5}$ is near the upper end for full fine-tuning of this model: the base model already models UltraChat-style text well (initial NLL 1.38).
+
+\textbf{HH-RLHF DPO} (61 min). At step 0 the loss is exactly $\ln 2$ with all rewards 0 (reward accuracy 0, as \S10.5 predicts). Validation reward accuracy rose quickly to 0.566 (step 30), then slowly to 0.627 (step 420, selected); the margin grew from 0.06 to 0.23 and the loss fell to 0.640. Both implicit rewards became \emph{negative} (chosen $-0.45$, rejected $-0.68$ at the selected step): DPO widened the gap mainly by lowering the rejected likelihood while the chosen log-probability also drifted down (policy chosen log-prob $-185.6 \to -191.0$). HH pairs are noisy (the chosen reply is often only marginally better), which matches the modest ceiling.
+
+\textbf{UltraFeedback DPO} (72 min). Reward accuracy jumped to 0.713 by step 30 and then plateaued at 0.72--0.73 (best 0.729 at step 150, selected by the manual's rule), while the margin kept growing from 0.56 to 0.71 and the loss kept falling (0.557 $\to$ 0.543). Accuracy differences after step 30 are within one standard error ($\approx$1.4 pp on 1k pairs), so ``best'' is essentially an early-stopping choice. Here too the gain comes from pushing rejected responses down (rejected reward $-0.54$ vs chosen $+0.02$ at step 150). In both runs the pre-clip gradient norm (median 42--57) is far above the clip of 1.0, so every update is clipped; with AdamW this mostly rescales the moment estimates. The fp16 GradScaler skipped one or two initial steps while calibrating.
+
+\textbf{LoRA-DPO.} With the added chosen-NLL term the logged loss (DPO + NLL) falls from 4.5 to 2.7. Held-out preference accuracy is 1.0 from step 10 and the margin saturates near 4.8, so these 20 pairs cannot separate configurations; Table~\ref{tab:sweep} uses generation-level diagnostics instead.
 
 \section{DPO-versus-SFT Results}\label{sec:results}
 \RES{results table + text}

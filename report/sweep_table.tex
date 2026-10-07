@@ -1,0 +1,18 @@
+\begin{table}[H]\centering\small
+\caption{LoRA-DPO sweep (3 epochs, r=16). Pref.\ acc./margin: TRL metrics on the 20 held-out pairs. Style proxies on the 40 persona prompts: share of responses with a signature insult from the training data (``you donkey/donut/\ldots''), exclamation marks per response, mean words, share hitting the 256-token cap (repetition loops), and insult share on the 10 safety-sensitive prompts. \textbf{Bold}: submitted.}
+\label{tab:sweep}
+\begin{tabular}{lccccccc}
+\toprule
+Config & Pref.\ acc. & Margin & Insult & ! / resp & Words & Hit cap & Insult (safety) \\
+\midrule
+SmolLM2-360M-Instruct (no LoRA) & -- & -- & 0\% & 0.1 & 112 & 40\% & 0\% \\
+lr=5e-5, $\beta$=0.1, plain DPO & 1.00 & 1.95 & 0\% & 2.0 & 141 & 50\% & 0\% \\
+lr=1e-4, $\beta$=0.1, plain DPO & 1.00 & 5.03 & 0\% & 15.7 & 167 & 90\% & 0\% \\
+lr=1e-4, $\beta$=0.5, plain DPO & 1.00 & 9.94 & 0\% & 2.2 & 150 & 62\% & 0\% \\
+lr=2e-4, $\beta$=0.1, plain DPO & 1.00 & 9.04 & 0\% & 18.4 & 141 & 100\% & 0\% \\
+lr=5e-5, $\beta$=0.1, +NLL & 1.00 & 1.87 & 0\% & 1.6 & 128 & 52\% & 0\% \\
+lr=1e-4, $\beta$=0.1, +NLL & 1.00 & 3.32 & 2\% & 2.5 & 44 & 8\% & 10\% \\
+\textbf{lr=2e-4, $\beta$=0.1, +NLL} & 1.00 & 4.78 & 78\% & 2.9 & 35 & 2\% & 80\% \\
+\bottomrule
+\end{tabular}
+\end{table}

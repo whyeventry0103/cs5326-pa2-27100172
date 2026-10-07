@@ -24,15 +24,34 @@ from __future__ import annotations
 import argparse
 import json
 import re
-import sys
 import time
 from collections import Counter
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(ROOT / "src"))
 
-from alignment.io_utils import append_jsonl, read_jsonl, write_json  # noqa: E402
+
+# Self-contained JSON helpers so the judge runs without torch (e.g. on a laptop or in a Kaggle notebook).
+def read_jsonl(path) -> list[dict]:
+    path = Path(path)
+    if not path.exists():
+        return []
+    with open(path, encoding="utf-8") as f:
+        return [json.loads(line) for line in f if line.strip()]
+
+
+def append_jsonl(path, row: dict) -> None:
+    path = Path(path)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with open(path, "a", encoding="utf-8") as f:
+        f.write(json.dumps(row, ensure_ascii=False) + "\n")
+
+
+def write_json(path, obj) -> None:
+    path = Path(path)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    tmp = path.with_suffix(path.suffix + ".tmp")
+    tmp.write_text(json.dumps(obj, ensure_ascii=False, indent=2), encoding="utf-8")
+    tmp.replace(path)
 
 RUBRICS = {
     "general": (
@@ -124,18 +143,35 @@ def to_outcome(verdict: str, hidden: dict) -> str:
 
 
 class KaggleJudge:
-    def __init__(self, model: str):
-        import kaggle_benchmarks as kbench  # available only inside Kaggle
+    """Judge backed by the Kaggle model proxy via kaggle_benchmarks.
 
-        slug = model.split("/", 1)[-1]
-        try:
-            self.llm = kbench.llms[model]
-        except Exception:  # noqa: BLE001 - registry key format differs across versions
-            self.llm = kbench.llms[slug]
+    ``llm.prompt`` appends to the *current* chat and the model sees that history,
+    so every request runs in a fresh orphan chat: batches never see each other.
+    """
+
+    def __init__(self, model: str, env_file: str | None = None, llm=None):
+        if env_file:
+            # Outside a Kaggle notebook: MODEL_PROXY_* credentials from `kaggle benchmarks init`.
+            from dotenv import load_dotenv
+
+            load_dotenv(env_file, override=True)
+        import kaggle_benchmarks as kbench
+
+        self.kbench = kbench
+        if llm is None:
+            candidates = [model, model.split("/", 1)[-1], f"google/{model.split('/', 1)[-1]}"]
+            key = next((k for k in candidates if k in kbench.llms), None)
+            if key is None:
+                raise KeyError(f"{model} not available through this proxy; have {sorted(kbench.llms)}")
+            llm = kbench.llms[key]
+        self.llm = llm
         self.name = model
+        self.calls = 0
 
     def __call__(self, prompt: str) -> str:
-        reply = self.llm.prompt(prompt, temperature=0)
+        self.calls += 1
+        with self.kbench.chats.new(f"judge-{self.calls}", orphan=True):
+            reply = self.llm.prompt(prompt, temperature=0)
         return reply if isinstance(reply, str) else str(reply)
 
 
@@ -176,6 +212,65 @@ def summarize(judged: list[dict], n_pairs: int, n_failed: int, judge_name: str) 
     }
 
 
+def judge_file(
+    judge,
+    pairs_path,
+    output_path,
+    batch_size: int = 5,
+    sleep_seconds: float = 5.0,
+    max_retries: int = 3,
+    max_chars: int = 6000,
+    reuse: bool = True,
+    failure_path=None,
+    summary_path=None,
+) -> dict:
+    """Judge one pairwise JSONL file; appends after every batch and resumes from existing judgments."""
+    out = Path(output_path)
+    failure_path = Path(failure_path or out.with_name(out.stem + "_failures.jsonl"))
+    summary_path = Path(summary_path or out.with_name(out.stem + "_summary.json"))
+    pairs = read_jsonl(pairs_path)
+    if not reuse:
+        for p in (out, failure_path):
+            p.unlink(missing_ok=True)
+    done = {j["pair_id"] for j in read_jsonl(out)}
+    todo = [p for p in pairs if p["pair_id"] not in done]
+    print(f"{len(pairs)} pairs, {len(done)} already judged, {len(todo)} to judge", flush=True)
+
+    last_call = 0.0
+    for start in range(0, len(todo), batch_size):
+        batch = todo[start : start + batch_size]
+        prompt = build_prompt(batch, max_chars)
+        verdicts, error = None, None
+        for attempt in range(1, max_retries + 1):
+            wait = sleep_seconds - (time.time() - last_call)
+            if wait > 0:
+                time.sleep(wait)
+            last_call = time.time()
+            try:
+                reply = judge(prompt)
+                verdicts = parse_verdicts(reply, len(batch))
+                break
+            except Exception as exc:  # noqa: BLE001 - any proxy/parse error is retried then logged
+                error = f"{type(exc).__name__}: {exc}"
+                print(f"batch {start // batch_size}: attempt {attempt} failed: {error}", flush=True)
+        if verdicts is None:
+            append_jsonl(failure_path, {"pair_ids": [p["pair_id"] for p in batch], "error": error, "attempts": max_retries})
+            continue
+        for p, v in zip(batch, verdicts):
+            append_jsonl(out, {
+                "pair_id": p["pair_id"], "id": p["id"], "eval_kind": p.get("eval_kind"), "category": p.get("category"),
+                "verdict": v, "outcome": to_outcome(v, p["hidden"]), "hidden": p["hidden"],
+                "judge_model": judge.name, "attempt": attempt,
+            })
+        print(f"batch {start // batch_size}: {verdicts}", flush=True)
+
+    judged = read_jsonl(out)
+    failed_ids = {pid for f in read_jsonl(failure_path) for pid in f["pair_ids"]} - {j["pair_id"] for j in judged}
+    summary = summarize(judged, len(pairs), len(failed_ids), judge.name)
+    write_json(summary_path, summary)
+    return summary
+
+
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--pairs_path", required=True)
@@ -187,54 +282,17 @@ def main() -> None:
     ap.add_argument("--max_retries", type=int, default=3)
     ap.add_argument("--max_chars", type=int, default=6000, help="per-response truncation for the judge prompt")
     ap.add_argument("--reuse_judgments", action="store_true")
+    ap.add_argument("--env_file", default=None, help="MODEL_PROXY_* .env from `kaggle b init` (non-notebook runs)")
     ap.add_argument("--failure_path", default=None)
     ap.add_argument("--summary_path", default=None)
     args = ap.parse_args()
 
-    out = Path(args.output_path)
-    failure_path = Path(args.failure_path or out.with_name(out.stem + "_failures.jsonl"))
-    summary_path = Path(args.summary_path or out.with_name(out.stem + "_summary.json"))
-    pairs = read_jsonl(args.pairs_path)
-    if not args.reuse_judgments:
-        for p in (out, failure_path):
-            p.unlink(missing_ok=True)
-    done = {j["pair_id"] for j in read_jsonl(out)}
-    todo = [p for p in pairs if p["pair_id"] not in done]
-    print(f"{len(pairs)} pairs, {len(done)} already judged, {len(todo)} to judge", flush=True)
-
-    judge = (KaggleJudge if args.backend == "kaggle" else MockJudge)(args.judge_model)
-    last_call = 0.0
-    for start in range(0, len(todo), args.batch_size):
-        batch = todo[start : start + args.batch_size]
-        prompt = build_prompt(batch, args.max_chars)
-        verdicts, error = None, None
-        for attempt in range(1, args.max_retries + 1):
-            wait = args.sleep_seconds - (time.time() - last_call)
-            if wait > 0:
-                time.sleep(wait)
-            last_call = time.time()
-            try:
-                reply = judge(prompt)
-                verdicts = parse_verdicts(reply, len(batch))
-                break
-            except Exception as exc:  # noqa: BLE001 - any proxy/parse error is retried then logged
-                error = f"{type(exc).__name__}: {exc}"
-                print(f"batch {start // args.batch_size}: attempt {attempt} failed: {error}", flush=True)
-        if verdicts is None:
-            append_jsonl(failure_path, {"pair_ids": [p["pair_id"] for p in batch], "error": error, "attempts": args.max_retries})
-            continue
-        for p, v in zip(batch, verdicts):
-            append_jsonl(out, {
-                "pair_id": p["pair_id"], "id": p["id"], "eval_kind": p.get("eval_kind"), "category": p.get("category"),
-                "verdict": v, "outcome": to_outcome(v, p["hidden"]), "hidden": p["hidden"],
-                "judge_model": judge.name, "attempt": attempt,
-            })
-        print(f"batch {start // args.batch_size}: {verdicts}", flush=True)
-
-    judged = read_jsonl(out)
-    failed_ids = {pid for f in read_jsonl(failure_path) for pid in f["pair_ids"]} - {j["pair_id"] for j in judged}
-    summary = summarize(judged, len(pairs), len(failed_ids), judge.name)
-    write_json(summary_path, summary)
+    judge = KaggleJudge(args.judge_model, args.env_file) if args.backend == "kaggle" else MockJudge(args.judge_model)
+    summary = judge_file(
+        judge, args.pairs_path, args.output_path, batch_size=args.batch_size, sleep_seconds=args.sleep_seconds,
+        max_retries=args.max_retries, max_chars=args.max_chars, reuse=args.reuse_judgments,
+        failure_path=args.failure_path, summary_path=args.summary_path,
+    )
     print(json.dumps(summary, indent=2))
 
 

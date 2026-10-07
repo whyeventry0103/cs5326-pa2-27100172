@@ -8,11 +8,11 @@ import random
 from pathlib import Path
 from typing import Iterable
 
-import numpy as np
-import torch
-
 
 def seed_everything(seed: int) -> None:
+    import numpy as np
+    import torch
+
     random.seed(seed)
     np.random.seed(seed)
     torch.manual_seed(seed)

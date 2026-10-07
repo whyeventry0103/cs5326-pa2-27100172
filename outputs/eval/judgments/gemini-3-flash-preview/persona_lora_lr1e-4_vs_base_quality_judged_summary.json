@@ -1,0 +1,20 @@
+{
+  "judge_model": "google/gemini-3-flash-preview",
+  "pairs": 40,
+  "judged": 40,
+  "wins": 13,
+  "losses": 26,
+  "ties": 1,
+  "unknown": 0,
+  "failed": 0,
+  "win_rate_excluding_ties": 0.3333333333333333,
+  "win_rate_ties_half": 0.3375,
+  "rates": {
+    "win": 0.325,
+    "loss": 0.65,
+    "tie": 0.025,
+    "unknown": 0.0,
+    "failure": 0.0
+  },
+  "total_attempts": 40
+}
