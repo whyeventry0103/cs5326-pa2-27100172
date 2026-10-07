@@ -40,7 +40,9 @@ uv venv .venv && uv pip install --python .venv/bin/python "torch==2.6.0" --index
 uv pip install --python .venv/bin/python -r requirements.txt && uv pip install --python .venv/bin/python -e . --no-deps
 ```
 
-On Kaggle, use the starter's install pattern (keep the preinstalled torch).
+Verified environment for the reported runs (`nvidia-smi` + version print on the server):
+2x NVIDIA RTX 6000 Ada (48 GB), torch 2.6.0+cu124, transformers 4.57.6, datasets 4.8.5,
+trl 1.14.1, peft 0.21.2. On Kaggle, use the starter's install pattern (keep the preinstalled torch).
 
 ## Tests
 
