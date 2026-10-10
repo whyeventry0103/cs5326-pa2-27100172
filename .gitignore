@@ -2,8 +2,9 @@ __pycache__/
 *.py[cod]
 .venv/
 *.tmp
-# derived training data: regenerate with scripts/prepare_data.py
-data/processed/
+# derived training data: exact subsets are committed gzipped (gunzip -k data/processed/*.gz);
+# regenerate from scratch with scripts/prepare_data.py
+data/processed/*.jsonl
 # model weights stay on the training server (multi-GB)
 outputs/**/best/
 outputs/**/final/

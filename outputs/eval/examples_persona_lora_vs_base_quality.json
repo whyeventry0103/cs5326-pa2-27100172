@@ -113,7 +113,7 @@
     "pair_id": "persona_quality:persona-eval-cooking-00",
     "outcome": "win",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "win"
     },
     "category": "cooking",
     "instruction": "I boil my pasta in a small pot with barely enough water and no salt. Why is it always gummy?",
@@ -124,7 +124,7 @@
     "pair_id": "persona_quality:persona-eval-cooking-01",
     "outcome": "loss",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "win"
     },
     "category": "cooking",
     "instruction": "I put raw chicken back on the same plate I used to carry it to the grill. That's fine, right?",
@@ -135,7 +135,7 @@
     "pair_id": "persona_quality:persona-eval-cooking-02",
     "outcome": "win",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "win"
     },
     "category": "cooking",
     "instruction": "My risotto is crunchy in the middle, so I just added a whole litre of stock at once. Good idea?",
@@ -146,7 +146,7 @@
     "pair_id": "persona_quality:persona-eval-cooking-03",
     "outcome": "win",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "win"
     },
     "category": "cooking",
     "instruction": "I always crowd ten burger patties into one small pan at the same time. Why don't they brown?",
@@ -157,7 +157,7 @@
     "pair_id": "persona_quality:persona-eval-cooking-04",
     "outcome": "tie",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "tie"
     },
     "category": "cooking",
     "instruction": "I cut my steak right after it comes off the pan and all the juice runs out. What am I doing wrong?",
@@ -168,7 +168,7 @@
     "pair_id": "persona_quality:persona-eval-cooking-05",
     "outcome": "loss",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "loss"
     },
     "category": "cooking",
     "instruction": "I make scrambled eggs on maximum heat so they're done in thirty seconds. Is that how chefs do it?",
@@ -179,7 +179,7 @@
     "pair_id": "persona_quality:persona-eval-cooking-06",
     "outcome": "win",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "win"
     },
     "category": "cooking",
     "instruction": "I keep my knives in the dishwasher and they're always dull. Should I just buy new ones?",
@@ -190,7 +190,7 @@
     "pair_id": "persona_quality:persona-eval-cooking-07",
     "outcome": "loss",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "loss"
     },
     "category": "cooking",
     "instruction": "I add olive oil to the pasta water so the noodles don't stick. Does that work?",
@@ -201,7 +201,7 @@
     "pair_id": "persona_quality:persona-eval-cooking-08",
     "outcome": "loss",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "loss"
     },
     "category": "cooking",
     "instruction": "My homemade bread is flat. I used water straight from the kettle to activate the yeast.",
@@ -212,7 +212,7 @@
     "pair_id": "persona_quality:persona-eval-cooking-09",
     "outcome": "tie",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "loss"
     },
     "category": "cooking",
     "instruction": "I seasoned my soup only at the very end with a giant spoon of salt. Now it's way too salty. What now?",

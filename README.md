@@ -24,6 +24,10 @@ The final report is in `report/report.pdf`.
 | `notebooks/judge_kaggle.ipynb` | Kaggle notebook that runs the judge on the saved pair files |
 | `scripts/plot_metrics.py`, `scripts/style_metrics.py`, `scripts/summarize_results.py` | figures and tables for the report |
 | `eval_sets/` | fixed eval sets: HH synthetic (300, provided), AlpacaEval (300, seed 42), persona (40) |
+| `data/processed/*.jsonl.gz` | the exact train/val subsets used (`gunzip -k`; checksums in `MD5SUMS`) |
+| `notebooks/00_environment_check.ipynb` | Task 1 check, executed on the training server: GPUs, package versions, tests |
+| `outputs/sanity_checks/` | 3-prompt generation sanity checks per checkpoint (template, EOS, length, repetition) |
+| `EVALUATION_SUMMARY.md` | DPO-vs-SFT (and LoRA-vs-base) results for both judges, both presentation orders |
 | `outputs/<run>/metrics.jsonl`, `config.json` | per-run logs and the exact arguments used |
 | `outputs/generations/`, `outputs/eval/` | generations, pair files, judgments, summaries |
 
@@ -57,7 +61,7 @@ padding invariance, exact numerics, and DPO optimisation steps.
 ## Reproducing the runs
 
 ```bash
-python scripts/prepare_data.py                        # data/processed/*.jsonl + eval_sets/alpaca_eval_300_seed42.json
+gunzip -k data/processed/*.jsonl.gz                  # exact subsets used (or regenerate: python scripts/prepare_data.py)
 python scripts/train_sft.py --output_dir outputs/sft   # ~40 min
 python scripts/train_dpo.py --train_path data/processed/hh_train.jsonl --val_path data/processed/hh_val.jsonl \
   --output_dir outputs/dpo_hh --policy_device cuda:0 --ref_device cuda:0 --gradient_checkpointing --eval_batch_size 2

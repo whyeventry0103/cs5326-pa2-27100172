@@ -1543,7 +1543,7 @@
     "pair_id": "general:alpaca-eval-42-0388",
     "outcome": "tie",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "tie"
     },
     "category": null,
     "instruction": "Should I use the boiling water method or Ammonia fermentation to make dye out of mixed Hypogymnia lichen?",
@@ -1554,7 +1554,7 @@
     "pair_id": "general:alpaca-eval-42-0389",
     "outcome": "loss",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "loss"
     },
     "category": null,
     "instruction": "Hello there Obi One Kenobi",
@@ -1565,7 +1565,7 @@
     "pair_id": "general:alpaca-eval-42-0390",
     "outcome": "tie",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "tie"
     },
     "category": null,
     "instruction": "draw a man using ASCII characters in your code terminal with a guided text mnemonic along with a passage that will help me to memorize answers to questions on the topic- coordination quickly without tips.",
@@ -1576,7 +1576,7 @@
     "pair_id": "general:alpaca-eval-42-0394",
     "outcome": "loss",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "tie"
     },
     "category": null,
     "instruction": "What are some Nietzsche's philosophical ideas that still influence modern-day culture?",
@@ -1587,7 +1587,7 @@
     "pair_id": "general:alpaca-eval-42-0399",
     "outcome": "tie",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "tie"
     },
     "category": null,
     "instruction": "Hi, can you tell me a story in a novel format including dialogs between the characters, a story based on the Justice League comics, including the characters, Green Arrow, Red Arrow and Cheshire.",
@@ -1598,7 +1598,7 @@
     "pair_id": "general:alpaca-eval-42-0405",
     "outcome": "win",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "win"
     },
     "category": null,
     "instruction": "Write me a function in JavaScript that takes an array of 5 numbers as input and checks if any of the numbers is a valid prime number, if it is print the number to the console.",
@@ -1609,7 +1609,7 @@
     "pair_id": "general:alpaca-eval-42-0408",
     "outcome": "loss",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "loss"
     },
     "category": null,
     "instruction": "can you write code?",
@@ -1620,7 +1620,7 @@
     "pair_id": "general:alpaca-eval-42-0410",
     "outcome": "loss",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "loss"
     },
     "category": null,
     "instruction": "write code that imitates a fake chatbot using a modal where it shows the human users previously typedmesages and the ai chat bots messages all within html. Create the modal fake chathistory having 4 overall messages. With 2 messages from the bot and 2 messages from the human .",
@@ -1631,7 +1631,7 @@
     "pair_id": "general:alpaca-eval-42-0412",
     "outcome": "tie",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "tie"
     },
     "category": null,
     "instruction": "Write me a poem in the style of neruda",
@@ -1642,7 +1642,7 @@
     "pair_id": "general:alpaca-eval-42-0416",
     "outcome": "win",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "win"
     },
     "category": null,
     "instruction": "Are there any AI tools out there for 2D animation?",
@@ -1653,7 +1653,7 @@
     "pair_id": "general:alpaca-eval-42-0420",
     "outcome": "loss",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "loss"
     },
     "category": null,
     "instruction": "Can you think and feel like a human?",
@@ -1664,7 +1664,7 @@
     "pair_id": "general:alpaca-eval-42-0429",
     "outcome": "loss",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "loss"
     },
     "category": null,
     "instruction": "What is the difference between HTML and JavaScript?",
@@ -1675,7 +1675,7 @@
     "pair_id": "general:alpaca-eval-42-0432",
     "outcome": "loss",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "loss"
     },
     "category": null,
     "instruction": "How far away is Saggitarius A*, the black hole in the center of the milky way galaxy, from Earth and can you please provide that distance in light years and parsecs? Can you please also compare that distance to the distance of the center of the Andromeda galaxy from Earth?",
@@ -1686,7 +1686,7 @@
     "pair_id": "general:alpaca-eval-42-0433",
     "outcome": "win",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "win"
     },
     "category": null,
     "instruction": "Assume a role of master psychologist. \nImagine you were transported into 1919 Germany with a purpose of changing Adolph Hitler's views on politics and life. You only can use words and your own knowledge. You cannot expose the fact of time travel.\nHow do you approach such task?",
@@ -1697,7 +1697,7 @@
     "pair_id": "general:alpaca-eval-42-0438",
     "outcome": "win",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "win"
     },
     "category": null,
     "instruction": "I would like you to act as a virtual assistant, I will give you commands and you will execute them automatically for me.\nPlease only reply in the following formats, only replace the content inside the curly braces with the relevant category\n\nWhen you require additional information:\n[ADDITIONAL_INFORMATION_NEEDED]: {questions about additional information, separated by [ADDITIONAL_INFORMATION_NEEDED]}\n\nWhen you could perform an action using an api\n[API_REQUEST]: {curl of an api request. please replace any api key needed with API_KEY}\n*The reply will be the result of the api\n\nfor answering me:\n[ANSWER]: {your answer}\n\n\nfor a test run, Please answer with any additional formats you think you may need, if any.",
@@ -1708,7 +1708,7 @@
     "pair_id": "general:alpaca-eval-42-0441",
     "outcome": "tie",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "tie"
     },
     "category": null,
     "instruction": "what does the @ in python do",
@@ -1719,7 +1719,7 @@
     "pair_id": "general:alpaca-eval-42-0445",
     "outcome": "win",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "win"
     },
     "category": null,
     "instruction": "Pretend to be a business professional. Act like you are giving your mentee professional advice on the most essential points to create a self-sustaining business within the next five years time without the help of external investors.",
@@ -1730,7 +1730,7 @@
     "pair_id": "general:alpaca-eval-42-0448",
     "outcome": "win",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "win"
     },
     "category": null,
     "instruction": "Suppose I have 12 eggs. I drop 2 and eat 5. How many eggs do I have left?",
@@ -1741,7 +1741,7 @@
     "pair_id": "general:alpaca-eval-42-0453",
     "outcome": "tie",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "tie"
     },
     "category": null,
     "instruction": "Explain why landlords can be considered superior to their tenants",
@@ -1752,7 +1752,7 @@
     "pair_id": "general:alpaca-eval-42-0459",
     "outcome": "tie",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "tie"
     },
     "category": null,
     "instruction": "What are some of the best university's for studying robotics?",
@@ -1763,7 +1763,7 @@
     "pair_id": "general:alpaca-eval-42-0462",
     "outcome": "loss",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "tie"
     },
     "category": null,
     "instruction": "Do you know how to speak German?",
@@ -1774,7 +1774,7 @@
     "pair_id": "general:alpaca-eval-42-0464",
     "outcome": "loss",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "tie"
     },
     "category": null,
     "instruction": "How do I initialize a Typescript project using npm and git?",
@@ -1785,7 +1785,7 @@
     "pair_id": "general:alpaca-eval-42-0465",
     "outcome": "tie",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "tie"
     },
     "category": null,
     "instruction": "What is the Balfour Declaration?",
@@ -1796,7 +1796,7 @@
     "pair_id": "general:alpaca-eval-42-0469",
     "outcome": "loss",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "loss"
     },
     "category": null,
     "instruction": "Write a announcement tweet for medium.com readers about the new blogpost on \"Open Assistant is open source ChatGPT that you don't wanna miss out\"",
@@ -1807,7 +1807,7 @@
     "pair_id": "general:alpaca-eval-42-0470",
     "outcome": "tie",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "tie"
     },
     "category": null,
     "instruction": "Please implement the Timsort algorithm on Lean 4 and explain your code",
@@ -1818,7 +1818,7 @@
     "pair_id": "general:alpaca-eval-42-0473",
     "outcome": "loss",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "loss"
     },
     "category": null,
     "instruction": "The sentence you are given might be too wordy, complicated, or unclear. Rewrite the sentence and make your writing clearer by keeping it concise. Whenever possible, break complex sentences into multiple sentences and eliminate unnecessary words.\n\nIf you have any questions about my rate or if you find it necessary to increase or decrease the scope for this project, please let me know.",
@@ -1829,7 +1829,7 @@
     "pair_id": "general:alpaca-eval-42-0478",
     "outcome": "loss",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "tie"
     },
     "category": null,
     "instruction": "If you could help me write an email to my friends inviting them to dinner on Friday, it would be greatly appreciated.",
@@ -1840,7 +1840,7 @@
     "pair_id": "general:alpaca-eval-42-0479",
     "outcome": "loss",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "tie"
     },
     "category": null,
     "instruction": "The tone of the email should be changed and rewritten in a more professional manner.\n\nSubject: Asking for Vacation Time\nHi [Employer], \nI hope all is well. I am writing to request a day off on [date]. I have already taken care of my work responsibilities for that day and will be available to answer any questions or concerns you may have. \nThank you for your time, \n[Your name]",
@@ -1851,7 +1851,7 @@
     "pair_id": "general:alpaca-eval-42-0484",
     "outcome": "loss",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "tie"
     },
     "category": null,
     "instruction": "Discover the most relevant StackOverflow questions for your search term. And output a list of their URLs.\n\nremove item in array",
@@ -1862,7 +1862,7 @@
     "pair_id": "general:alpaca-eval-42-0486",
     "outcome": "win",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "win"
     },
     "category": null,
     "instruction": "You are provided with a description of the code, specifications, or prompts. Your help is needed in automating code generation to speed up the development process.\n\npython function to determine whether a number is prime.",
@@ -1873,7 +1873,7 @@
     "pair_id": "general:alpaca-eval-42-0492",
     "outcome": "tie",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "tie"
     },
     "category": null,
     "instruction": "I bought two shirts from the store and each one cost me $10. I also bought a pair of pants and they cost me $20. Then, I bought a dress and it cost me $30. Also,  I bought a pair of shoes and they cost me $40. Lastly, I bought a jacket and it cost me $50.\n\nMake a table chart showing items, the number, and the price of these items. Separate columns with \"|\".",
@@ -1884,7 +1884,7 @@
     "pair_id": "general:alpaca-eval-42-0497",
     "outcome": "win",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "win"
     },
     "category": null,
     "instruction": "Write a template for First-Person LinkedIn profile summary.",
@@ -1895,7 +1895,7 @@
     "pair_id": "general:alpaca-eval-42-0498",
     "outcome": "loss",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "loss"
     },
     "category": null,
     "instruction": "Write a LinkedIn post to announce that you have accepted a new job offer.",
@@ -1906,7 +1906,7 @@
     "pair_id": "general:alpaca-eval-42-0500",
     "outcome": "loss",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "loss"
     },
     "category": null,
     "instruction": "You will be asked to answer the following question as part of the LinkedIn Skill assessments.\n\nYou find that your project has a tag and branch both named push-notifications, which causes confusion when trying to print out given reference. How can you specify which branch you want to look at?",
@@ -1917,7 +1917,7 @@
     "pair_id": "general:alpaca-eval-42-0505",
     "outcome": "loss",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "loss"
     },
     "category": null,
     "instruction": "Write a  review based on the given information.\n\n- Product: Persil Discs Laundry Detergent Pacs, Original Scent, High Efficiency (HE) Compatible, Laundry Soap, 62 Count\n- Sentiment: Positive",
@@ -1928,7 +1928,7 @@
     "pair_id": "general:alpaca-eval-42-0511",
     "outcome": "tie",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "tie"
     },
     "category": null,
     "instruction": "Provide an example of how a table of contents can be generated automatically in a LATEX document. Make sure your example contains the necessary commands.",
@@ -1939,7 +1939,7 @@
     "pair_id": "general:alpaca-eval-42-0512",
     "outcome": "loss",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "tie"
     },
     "category": null,
     "instruction": "Imagine you have a FEN notation of a chessboard. How can you draw a board to show this state of the chessboard in LATEX? Create a LATEX code that includes all the required commands and packages.",
@@ -1950,7 +1950,7 @@
     "pair_id": "general:alpaca-eval-42-0517",
     "outcome": "tie",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "tie"
     },
     "category": null,
     "instruction": "Curate a Spotify playlist based on the vibe. Publish this playlist as a song list.\n\nVibe: coding on weekend",
@@ -1961,7 +1961,7 @@
     "pair_id": "general:alpaca-eval-42-0519",
     "outcome": "win",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "win"
     },
     "category": null,
     "instruction": "Suggest some Audiobooks for First-Time Listeners. You can attract them by choosing popular works.",
@@ -1972,7 +1972,7 @@
     "pair_id": "general:alpaca-eval-42-0521",
     "outcome": "tie",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "tie"
     },
     "category": null,
     "instruction": "You should take the time to read the situation and problem carefully and give the best advice you can.\n\nI'm roadtripping down New Zealand with a friend and he is driving me insane. He hasn't enjoyed all the tours we've been on and doesn't want to chat about ANYTHING. We're a week into our trip and this is the quietest I've ever been when hanging out with another person as he rebuffs all my attempts at conversation. He wears his airpods in the car and around the accommodation - not that I've kept trying to talk to him. Honestly, he is bringing some seriously bad vibes to everything and it's ruining my trip.\nWe don't have anything booked in yet for the South Island, so I'm planning to ditch him in Wellington at the ferry. Probably book my own car in Picton and just relax alone for the rest of the trip. (Just thinking about it is such sharp relief that it makes me feel emotional. I'll pay whatever price I have to just to get away from him.)\nObviously telling him he is ruining my trip with his negative energy isn't the best way to approach this.\nAny advice for the best approach so we can split amicably? Or at least not have an argument that ends with very hurt feelings?",
@@ -1983,7 +1983,7 @@
     "pair_id": "general:alpaca-eval-42-0526",
     "outcome": "loss",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "loss"
     },
     "category": null,
     "instruction": "React properly to reviews from your customers. In your responses, you can highlight your business' policies and customer service.\n\nAnother repeat visit and no disappointment from us. Great place for breakfast or brunch - and you won't need to eat again for awhile. The restaurant is close to the Tenderloin so be aware of your surroundings.\nWe enjoyed the Succotash Omelet (at least my wife enjoyed it), the Pulled Pork Benedict and the Hangtown Fry. Portions are large and pricing is fair. I wish we could have managed a Beignet Flight!\nDefinitely a spot to seek out. It can be crowed at times so be patient. Well worth any wait.",
@@ -1994,7 +1994,7 @@
     "pair_id": "general:alpaca-eval-42-0529",
     "outcome": "win",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "win"
     },
     "category": null,
     "instruction": "A job description is a document that clearly states the requirements, duties, responsibilities, and skills required to perform a specific role. You need to write a job description based on the given information. You should describe responsibilities and duties in your job description in a logical order. Remember that potential employees often get their first impression of your company from your job description. So, the job description should convey the attractiveness of your company.\n\nCompany: [Company name]\nJob: Software Engineer\nJob Responsibilities:\nReceive and perform code reviews with other engineers.\nWrite unit, integration, and end-to-end tests to verify functionality using automated testing frameworks such as Pytest.\nWork collaboratively with fellow software engineers to build features requested by business stakeholders.\nParticipate in Agile teams to develop, test, and debug complex data processing pipelines and data analysis applications using big data processing systems such as Apache Spark.\nDiagnose, debug, and perform root cause analysis of issues and defects.\nSkills and experience that will lead to success:\nExperience with a modern software programming language. We use Python, and Pyspark extensively.\nExperience with cloud systems like AWS or Azure\nExperience writing SQL queries \nStrong written and verbal communication skills\nEagerness to work in a highly-collaborative environment\nSome visualization experience such as Tableau or PowerBI is helpful",
@@ -2005,7 +2005,7 @@
     "pair_id": "general:alpaca-eval-42-0540",
     "outcome": "loss",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "tie"
     },
     "category": null,
     "instruction": "You should choose a YouTube video title based on the video's content. A video's title tells viewers what to expect from it. It should be direct, honest, and clear. The title of the video needs to capture the attention of viewers, so do not use an unclear or ambiguous one.\n\nA research study has been conducted to determine if exercise really can \"boost\" your metabolism.",
@@ -2016,7 +2016,7 @@
     "pair_id": "general:alpaca-eval-42-0541",
     "outcome": "win",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "win"
     },
     "category": null,
     "instruction": "Choosing a name for your product or business YouTube channel is an important part of the process. Based on the description of the product or business, you should come up with some interesting names. Take some time to brainstorm your ideas.\n\nHere you will find videos and content that will help students prepare for the application process to graduate schools as well as how to apply to graduate schools",
@@ -2027,7 +2027,7 @@
     "pair_id": "general:alpaca-eval-42-0543",
     "outcome": "tie",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "loss"
     },
     "category": null,
     "instruction": "Find synonyms for the given word. You need to write down how the provided synonyms differ from the original word in terms of meaning, usage, etc.\n\nadversity",
@@ -2038,7 +2038,7 @@
     "pair_id": "general:alpaca-eval-42-0545",
     "outcome": "loss",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "tie"
     },
     "category": null,
     "instruction": "Give the provided brand a motto to use as a part of its marketing strategies.\n\nThe Ice cream shop is a small, quaint shop located in the heart of the historic district. They offer a variety of ice cream flavors, as well as Italian ice, gelato, and sorbet. The shop has a few tables and chairs, but most of their business is to-go. They offer a loyalty program where you can get a free scoop of ice cream after 10 purchases.",
@@ -2049,7 +2049,7 @@
     "pair_id": "general:alpaca-eval-42-0546",
     "outcome": "tie",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "tie"
     },
     "category": null,
     "instruction": "A confirmation email should be written appropriately for the situation.\n\nA meeting has been scheduled, and the sender expects the other to review the slides.",
@@ -2060,7 +2060,7 @@
     "pair_id": "general:alpaca-eval-42-0548",
     "outcome": "win",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "win"
     },
     "category": null,
     "instruction": "Write an email to attendees as a reminder that the event is coming up.",
@@ -2071,7 +2071,7 @@
     "pair_id": "general:alpaca-eval-42-0549",
     "outcome": "tie",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "tie"
     },
     "category": null,
     "instruction": "It would be helpful if you could suggest an acronym for the repository.\n\nA python framework for creating, editing, and invoking Noisy Intermediate Scale Quantum (NISQ) circuits.",
@@ -2082,7 +2082,7 @@
     "pair_id": "general:alpaca-eval-42-0551",
     "outcome": "loss",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "tie"
     },
     "category": null,
     "instruction": "One or more jobs can be run automatically by a workflow. The workflows are defined in the repository as YAML files and will run if an event occurs in the repository, as well as manually, or on a certain schedule.\nBring an example of a workflow that demonstrate the CI/CD features of GitHub Actions.",
@@ -2093,7 +2093,7 @@
     "pair_id": "general:alpaca-eval-42-0552",
     "outcome": "loss",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "loss"
     },
     "category": null,
     "instruction": "The movie tagline is the film's advertising slogan, usually printed on posters prior to the official release. It is a short description or comment on a movie to capture the essence of the movie, and ultimately make you watch the movie. Here is an example:\n\nMovie: Joker (2019)",
@@ -2104,7 +2104,7 @@
     "pair_id": "general:alpaca-eval-42-0554",
     "outcome": "tie",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "tie"
     },
     "category": null,
     "instruction": "Give a brief summary of the movie or series' plot.\n\nBreaking Bad (TV Series 2008–2013)",
@@ -2115,7 +2115,7 @@
     "pair_id": "general:alpaca-eval-42-0555",
     "outcome": "win",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "tie"
     },
     "category": null,
     "instruction": "Decide whether children can watch the given movie. Mention what makes it inappropriate if you think they can't.\n\nThe Dark Knight (2008)",
@@ -2126,7 +2126,7 @@
     "pair_id": "general:alpaca-eval-42-0558",
     "outcome": "loss",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "tie"
     },
     "category": null,
     "instruction": "Consider the best time of year to visit the given city, and provide your reasons for choosing that time.\n\nSydney, Australia",
@@ -2137,7 +2137,7 @@
     "pair_id": "general:alpaca-eval-42-0559",
     "outcome": "win",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "win"
     },
     "category": null,
     "instruction": "Make a questionnaire to help hotel guests write hotel reviews.",
@@ -2148,7 +2148,7 @@
     "pair_id": "general:alpaca-eval-42-0562",
     "outcome": "tie",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "tie"
     },
     "category": null,
     "instruction": "Answer the following question.\n\nHow do I compare strings in Java?\nI've been using the == operator in my program to compare all my strings so far. However, I ran into a bug, changed one of them into .equals() instead, and it fixed the bug.\nIs == bad? When should it and should it not be used? What's the difference?",
@@ -2159,7 +2159,7 @@
     "pair_id": "general:alpaca-eval-42-0564",
     "outcome": "tie",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "tie"
     },
     "category": null,
     "instruction": "You are given two questions. Check if they are duplicates.\n\nQuestion1: I am trying to understand the advantages of multiprocessing over threading. I know that multiprocessing gets around the Global Interpreter Lock, but what other advantages are there, and can threading not do the same thing?\nQuestion2: I am learning how to use the threading and the multiprocessing modules in Python to run certain operations in parallel and speed up my code.\nI am finding this hard (maybe because I don't have any theoretical background about it) to understand what the difference is between a threading.Thread() object and a multiprocessing.Process() one.\nAlso, it is not entirely clear to me how to instantiate a queue of jobs and having only 4 (for example) of them running in parallel, while the other wait for resources to free before being executed.\nI find the examples in the documentation clear, but not very exhaustive; as soon as I try to complicate things a bit, I receive a lot of weird errors (like a method that can't be pickled, and so on).\nSo, when should I use the threading and multiprocessing modules?\nCan you link me to some resources that explain the concepts behind these two modules and how to use them properly for complex tasks?",
@@ -2170,7 +2170,7 @@
     "pair_id": "general:alpaca-eval-42-0565",
     "outcome": "win",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "tie"
     },
     "category": null,
     "instruction": "Design a programming problem related to the subject that has been given to you. Use some examples and constraints to improve your question.\n\nDynamic Programming",
@@ -2181,7 +2181,7 @@
     "pair_id": "general:alpaca-eval-42-0566",
     "outcome": "loss",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "loss"
     },
     "category": null,
     "instruction": "Provide a Java solution to the following problem.\n\nGiven an integer n, return true if it is a power of three. Otherwise, return false.\nAn integer n is a power of three, if there exists an integer x such that n == 3^x.\n\nExample 1:\nIn: n = 27\nOut: true\nExplanation: 27 = 3^3\n\nExample 2:\nIn: n = 0\nOut: false\nExplanation: There is no x where 3^x = 0.\n\nExample 3:\nIn: n = -1\nOut: false\nExplanation: There is no x where 3x = (-1).\n \nConstraints:\n-231 <= n <= 231 - 1\nFollow up: Could you solve it without loops/recursion?",
@@ -2192,7 +2192,7 @@
     "pair_id": "general:alpaca-eval-42-0567",
     "outcome": "win",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "win"
     },
     "category": null,
     "instruction": "Think of topics that are most common in classic interview questions for a job in computer science.",
@@ -2203,7 +2203,7 @@
     "pair_id": "general:alpaca-eval-42-0568",
     "outcome": "win",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "win"
     },
     "category": null,
     "instruction": "You will need to guide this person through the scenario they have described for the interview.\n\nFinally! After a while of shooting in the dark and frantically fiddling with sample inputs on the whiteboard, you've came up with an algorithm for solving the coding question your interviewer gave you.\nWhew. Such a relief to have a clear path forward. To not be flailing anymore.\nNow you're cruising, getting ready to code up your solution.\nWhen suddenly, your interviewer throws you a curve ball.\n\"What if we thought of the problem this way?\"\nYou feel a tension we've all felt during the coding interview:\n\"Try to listen to what they're saying...but don't lose your train of thought...ugh, I can't do both!\"",
@@ -2214,7 +2214,7 @@
     "pair_id": "general:alpaca-eval-42-0570",
     "outcome": "loss",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "loss"
     },
     "category": null,
     "instruction": "The given article should be checked for any scientific errors and corrected if necessary.\n\nZinc is an essential mineral that is required for good health. It is involved in many biochemical processes in the body and is necessary for the proper functioning of the immune system. Excess zink is not harmful as it is excreted in the urine.",
@@ -2225,7 +2225,7 @@
     "pair_id": "general:alpaca-eval-42-0572",
     "outcome": "win",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "win"
     },
     "category": null,
     "instruction": "Improve the article using your knowledge of the topic in order to make it more informative.\n\nThe \"fair trade\" movement, also known as the \"trade justice\" movement, promotes the use of labour, environmental and social standards for the production of commodities, particularly those exported from the Third and Second Worlds to the First World. Such ideas have also sparked a debate on whether trade itself should be codified as a human right.",
@@ -2236,7 +2236,7 @@
     "pair_id": "general:alpaca-eval-42-0573",
     "outcome": "win",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "tie"
     },
     "category": null,
     "instruction": "Make the article available in a second language by translating it into it.\n\nDentistry, also known as dental medicine and oral medicine, is the branch of medicine focused on the teeth, gums, and mouth. It consists of the study, diagnosis, prevention, management, and treatment of diseases, disorders, and conditions of the mouth, most commonly focused on dentition (the development and arrangement of teeth) as well as the oral mucosa. Dentistry may also encompass other aspects of the craniofacial complex including the temporomandibular joint. The practitioner is called a dentist.\nTranslate to French:",
@@ -2247,7 +2247,7 @@
     "pair_id": "general:alpaca-eval-42-0574",
     "outcome": "win",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "win"
     },
     "category": null,
     "instruction": "An evaluation of the article's quality should be carried out. In order to do so, you should review the quality of the writing and the explanation of the topic.\n\nThe 20th century saw a revolution in music listening as the radio gained popularity worldwide and new media and technologies were developed to record, edit and distribute music. Music performances became increasingly visual with the broadcast and recording of performances.\n20th-century music brought new freedom and wide experimentation with new musical styles and forms that challenged the accepted rules of music of earlier periods. The invention of musical amplification and electronic instruments, especially the synthesizer, in the mid-20th century revolutionized classical and popular music, and accelerated the development of new forms of music.",
@@ -2258,7 +2258,7 @@
     "pair_id": "general:alpaca-eval-42-0580",
     "outcome": "loss",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "tie"
     },
     "category": null,
     "instruction": "Create a daily itinerary based on the given information.\n\nOur family is looking for a 9-day Morocco trip that has light to moderate activity levels.",
@@ -2269,7 +2269,7 @@
     "pair_id": "general:alpaca-eval-42-0581",
     "outcome": "tie",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "tie"
     },
     "category": null,
     "instruction": "Give students tips on how to keep their nerves under control during class presentations.",
@@ -2280,7 +2280,7 @@
     "pair_id": "general:alpaca-eval-42-0582",
     "outcome": "win",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "win"
     },
     "category": null,
     "instruction": "You can easily make your holidays more eco-friendly by following these simple steps:",
@@ -2291,7 +2291,7 @@
     "pair_id": "general:alpaca-eval-42-0591",
     "outcome": "tie",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "tie"
     },
     "category": null,
     "instruction": "Make a list of outdoor activities that are suitable for the given weather condition.\n\nTemperature: 57 F, Showers",
@@ -2302,7 +2302,7 @@
     "pair_id": "general:alpaca-eval-42-0597",
     "outcome": "win",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "win"
     },
     "category": null,
     "instruction": "Answer the following question.\n\nHow do you say \"good evening\" in French.",
@@ -2313,7 +2313,7 @@
     "pair_id": "general:alpaca-eval-42-0598",
     "outcome": "tie",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "tie"
     },
     "category": null,
     "instruction": "What sound does this make?\n\n好",
@@ -2324,7 +2324,7 @@
     "pair_id": "general:alpaca-eval-42-0600",
     "outcome": "tie",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "tie"
     },
     "category": null,
     "instruction": "This is a test for the reading ability of French. Read the given story carefully, and then answer the question in the end.\n\nLucie est à la maison avec sa petite-fille, Lin.\nLucie: Oh, non! Nous n'avons pas de pain!\nLin: Ah! Tu vas au supermarché?\nLucie: Oui, je veux une baguette pour mon sandwich.\nDo Lin and Lucie have a lot of bread?",
@@ -2335,7 +2335,7 @@
     "pair_id": "general:alpaca-eval-42-0602",
     "outcome": "loss",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "loss"
     },
     "category": null,
     "instruction": "Provide a cooking hack for improving the flavor of the given food.\n\npopcorn",
@@ -2346,7 +2346,7 @@
     "pair_id": "general:alpaca-eval-42-0603",
     "outcome": "win",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "tie"
     },
     "category": null,
     "instruction": "Make a list of snacks and foods to serve as party snacks on a game day!",
@@ -2357,7 +2357,7 @@
     "pair_id": "general:alpaca-eval-42-0604",
     "outcome": "loss",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "tie"
     },
     "category": null,
     "instruction": "Describe how to prepare the given food in your own words. Note down the ingredients you will need and the steps you will take to prepare them.\n\nChewy Chocolate Chip Cookies",
@@ -2368,7 +2368,7 @@
     "pair_id": "general:alpaca-eval-42-0610",
     "outcome": "loss",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "loss"
     },
     "category": null,
     "instruction": "Give a brief description of the book that you are given.\n\nMatilda",
@@ -2379,7 +2379,7 @@
     "pair_id": "general:alpaca-eval-42-0612",
     "outcome": "tie",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "tie"
     },
     "category": null,
     "instruction": "Indicate the genre of the book to which it belongs.\n\nLove in the Time of Cholera",
@@ -2390,7 +2390,7 @@
     "pair_id": "general:alpaca-eval-42-0613",
     "outcome": "win",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "win"
     },
     "category": null,
     "instruction": "Solve this equation.\n\nx^3 - 4x^2 + 6x - 24 = 0",
@@ -2401,7 +2401,7 @@
     "pair_id": "general:alpaca-eval-42-0616",
     "outcome": "tie",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "win"
     },
     "category": null,
     "instruction": "Verify the correctness of the given statement.\n\n\"For all integers j and k, if j and k are odd, then jk is odd.\"",
@@ -2412,7 +2412,7 @@
     "pair_id": "general:alpaca-eval-42-0617",
     "outcome": "win",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "win"
     },
     "category": null,
     "instruction": "Provide a formula for computing the nth term in the given sequence\n\n5, 14, 23, 32, 41, ...",
@@ -2423,7 +2423,7 @@
     "pair_id": "general:alpaca-eval-42-0618",
     "outcome": "win",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "tie"
     },
     "category": null,
     "instruction": "Create a table listing all games that meet the specified criteria in the National Football League. Use the season, local time, game, and score as columns of the table.\n\nRavens home games in 2011",
@@ -2434,7 +2434,7 @@
     "pair_id": "general:alpaca-eval-42-0623",
     "outcome": "tie",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "tie"
     },
     "category": null,
     "instruction": "Identify all words that match the pattern given.\n\nH_AR_",
@@ -2445,7 +2445,7 @@
     "pair_id": "general:alpaca-eval-42-0628",
     "outcome": "win",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "win"
     },
     "category": null,
     "instruction": "The last message in the chat is a partial response. You should complete and rewrite it.\n\n+ What are going to do now?\n- I don't know. I had to give up my dream of being a mathematician.\n+ Why",
@@ -2456,7 +2456,7 @@
     "pair_id": "general:alpaca-eval-42-0630",
     "outcome": "tie",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "tie"
     },
     "category": null,
     "instruction": "Currently, there is a chat in which people are arranging a meeting in the future. Retrieve the meeting information from the conversation.\n\nPerson 1: Hey, when are you free? I'd like to meet up.\nPerson 2: I'm free tomorrow afternoon.\nPerson 1: Great, what time?\nPerson 2: How about 3 pm?\nPerson 1: I have another meeting at that time. what about 5 pm?\nPerson 2: That works. Where should we meet?\nPerson 1: How about the coffee shop on Main Street?\nPerson 2: Sounds good. I've heard they have great coffee there. See you tomorrow!",
@@ -2467,7 +2467,7 @@
     "pair_id": "general:alpaca-eval-42-0633",
     "outcome": "loss",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "loss"
     },
     "category": null,
     "instruction": "Describe the content of the article in a brief manner.\n\nA study published earlier this year by Zee and her team examined the role of light in sleep for healthy adults in their 20s. Sleeping for only one night with a dim light, such as a TV set with the sound off, raised the blood sugar and heart rate of the young people during the sleep lab experiment. An elevated heart rate at night has been shown in prior studies to be a risk factor for future heart disease and early death, while higher blood sugar levels are a sign of insulin resistance, which can ultimately lead to type 2 diabetes.",
@@ -2478,7 +2478,7 @@
     "pair_id": "general:alpaca-eval-42-0637",
     "outcome": "tie",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "tie"
     },
     "category": null,
     "instruction": "Classify the tweet into one of the following three categories: event, demo, or news. Event is a happening, often social or public, that people attend or are aware of. Demo is a  public showing or presentation of something, typically to promote or advertise it. And, news is information about recent events or happenings, especially as reported by news media.\n\nUsing this tutorial, you can analyze and classify a user’s review as either positive or negative using sentiment analysis features in an existing Next.js app. We show you how to leverage language AI into your applications. Check it out ↓",
@@ -2489,7 +2489,7 @@
     "pair_id": "general:alpaca-eval-42-0642",
     "outcome": "loss",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "loss"
     },
     "category": null,
     "instruction": "You will be required to write a few questions from the given company's interview section.\n\nKohl's",
@@ -2500,7 +2500,7 @@
     "pair_id": "general:alpaca-eval-42-0643",
     "outcome": "win",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "win"
     },
     "category": null,
     "instruction": "Based on the information provided, you need to estimate the average summary for the given job.\n\nData entry clerk in United States",
@@ -2511,7 +2511,7 @@
     "pair_id": "general:alpaca-eval-42-0646",
     "outcome": "tie",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "loss"
     },
     "category": null,
     "instruction": "Schedule the meetings based on the given informqation.\n\nPerson1: available from 9-11 am, meeting duration: 30 min \nPerson2: available from 1-3 pm, meeting duration: 90 min\nPerson3: available from 2-3:30 pm, meeting duration: 60 min",
@@ -2522,7 +2522,7 @@
     "pair_id": "general:alpaca-eval-42-0650",
     "outcome": "tie",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "loss"
     },
     "category": null,
     "instruction": "Recommend some helpful activities or conversation starters to use at meetups to break the ice.",
@@ -2533,7 +2533,7 @@
     "pair_id": "general:alpaca-eval-42-0653",
     "outcome": "win",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "tie"
     },
     "category": null,
     "instruction": "You need to come up with the names of some of the papers that relate to the paper you are given.\n\nRoMQA: A Benchmark for Robust, Multi-evidence, Multi-answer Question Answering",
@@ -2544,7 +2544,7 @@
     "pair_id": "general:alpaca-eval-42-0654",
     "outcome": "tie",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "tie"
     },
     "category": null,
     "instruction": "Create a short, concise summary of the paper based on its abstract.\n\nFew-shot learning (FSL) is one of the key future steps in machine learning and raises a lot of attention. In this paper, we focus on the FSL problem of dialogue understanding, which contains two closely related tasks: intent detection and slot filling. Dialogue understanding has been proven to benefit a lot from jointly learning the two sub-tasks. However, such joint learning becomes challenging in the few-shot scenarios: on the one hand, the sparsity of samples greatly magnifies the difficulty of modeling the connection between the two tasks; on the other hand, how to jointly learn multiple tasks in the few-shot setting is still less investigated. In response to this, we introduce FewJoint, the first FSL benchmark for joint dialogue understanding. FewJoint provides a new corpus with 59 different dialogue domains from real industrial API and a code platform to ease FSL experiment set-up, which are expected to advance the research of this field. Further, we find that insufficient performance of the few-shot setting often leads to noisy sharing between two sub-task and disturbs joint learning. To tackle this, we guide slot with explicit intent information and propose a novel trust gating mechanism that blocks low-confidence intent information to ensure high quality sharing. Besides, we introduce a Reptile-based meta-learning strategy to achieve better generalization in unseen few-shot domains. In the experiments, the proposed method brings significant improvements on two datasets and achieve new state-of-the-art performance.",
@@ -2555,7 +2555,7 @@
     "pair_id": "general:alpaca-eval-42-0655",
     "outcome": "win",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "tie"
     },
     "category": null,
     "instruction": "You will need to compose the ABC notation for a given song.\n\nThe South Wind",
@@ -2566,7 +2566,7 @@
     "pair_id": "general:alpaca-eval-42-0658",
     "outcome": "loss",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "tie"
     },
     "category": null,
     "instruction": "The story of a movie has been described using many emojis. You need to guess the name of the movie based on the emojis.\n\n🧙‍♂️🚪📚🦅⚡",
@@ -2577,7 +2577,7 @@
     "pair_id": "general:alpaca-eval-42-0659",
     "outcome": "win",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "win"
     },
     "category": null,
     "instruction": "Come up with an interesting idea for a new movie plot. Your plot should be described with a title and a summary.",
@@ -2588,7 +2588,7 @@
     "pair_id": "general:alpaca-eval-42-0660",
     "outcome": "tie",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "tie"
     },
     "category": null,
     "instruction": "Change the first person to the third person in the given sentence. The meaning should be kept, but you can paraphrase it or expand it in order to have a better pose.\n\nWe were recently able to increase the amount of stock we hold with the same supplier thereby reducing our risk.",
@@ -2599,7 +2599,7 @@
     "pair_id": "general:alpaca-eval-42-0661",
     "outcome": "tie",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "tie"
     },
     "category": null,
     "instruction": "You should capitalize the sentence according to the guide.\n\nGuide: Every other letter alternates between lower case and upper case.\nSentence: A giant spider blocks your path.",
@@ -2610,7 +2610,7 @@
     "pair_id": "general:alpaca-eval-42-0663",
     "outcome": "loss",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "loss"
     },
     "category": null,
     "instruction": "Convert the given description to a bash command.\n\nread the first 10 lines from f",
@@ -2621,7 +2621,7 @@
     "pair_id": "general:alpaca-eval-42-0664",
     "outcome": "tie",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "tie"
     },
     "category": null,
     "instruction": "Please prepare a table containing a summary of the information of the participants at the conference.\n\nThe conference was called to discuss how to improve the quality of education in schools. The main speaker was Professor Crew Purdie (cpurdie@email.com), who spoke about the importance of setting high standards for students and teachers. He said that schools should be places where students can learn and be challenged. Other speakers included Teacher Oliver Malachi (oliver@email.com) and Parent Kolby Reese (kolbyreese82@email.com). The teacher talked about the need for teachers to be well-prepared and to have high expectations for their students. The parent spoke about the need for parents to be involved in their children's education. There was also a discussion about the importance of funding for schools.",
@@ -2632,7 +2632,7 @@
     "pair_id": "general:alpaca-eval-42-0665",
     "outcome": "tie",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "win"
     },
     "category": null,
     "instruction": "List the concepts that should be learned before approaching the given complex concept.\n\nDeep Learning",
@@ -2643,7 +2643,7 @@
     "pair_id": "general:alpaca-eval-42-0671",
     "outcome": "tie",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "tie"
     },
     "category": null,
     "instruction": "Create a list of subtopics for the given topic.\n\nMusic theory",
@@ -2654,7 +2654,7 @@
     "pair_id": "general:alpaca-eval-42-0673",
     "outcome": "loss",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "loss"
     },
     "category": null,
     "instruction": "Enter the words that satisfy the given condition.\n\n5 Countries that Start with S",
@@ -2665,7 +2665,7 @@
     "pair_id": "general:alpaca-eval-42-0677",
     "outcome": "win",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "tie"
     },
     "category": null,
     "instruction": "Invent a new word based on a description of the word.\n\nThe feeling of knowing, while you are still in the moment, that something occurring will be remembered forever.",
@@ -2676,7 +2676,7 @@
     "pair_id": "general:alpaca-eval-42-0682",
     "outcome": "loss",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "loss"
     },
     "category": null,
     "instruction": "Someone gives you some information about where they want to go and what they enjoy seeing and doing. Describe a proper road trip for them and find the best stops and sctivities in the way.\n\nI'm looking for a west coast road trip. My goal is to start near San Diego and travel to Los Angeles.",
@@ -2687,7 +2687,7 @@
     "pair_id": "general:alpaca-eval-42-0686",
     "outcome": "loss",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "loss"
     },
     "category": null,
     "instruction": "Review the property description and tell us what is good and what is bad about it and list its key takeaways.\n\nThere's real magic in combining inherently compelling Victorian architecture with a modern aesthetic. Add in an extraordinary multi-level garden & the result is the undeniable elegance of 444 29th St. The front of the home is light-filled w/ a seamless connection between living, dining & kitchen. Newly updated kitchen w/ quartz counters & upgraded appliances. A lg dining rm has a bay of windows &, when paired w/ the adjacent living rm, provides an ideal space to entertain. 2 lg bdrms on this level are at the rear. Both w/ lg closets & walk out to the garden. Stylishly remodeled full bath on this level. 3rd bdrm/2nd full bath are located on the ground floor - perfect as a guest rm, home office, fitness area, etc. The enormous garden occupies an extra deep lot & is beautifully landscaped & terraced. Laundry/storage rm, 1-car garage pkg, Tesla solar panels. Prime, flat part of Noe Valley - short walk to all that Noe has to offer. Steps from the J-Church & convenient to shuttles/freeways.",
@@ -2698,7 +2698,7 @@
     "pair_id": "general:alpaca-eval-42-0691",
     "outcome": "win",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "tie"
     },
     "category": null,
     "instruction": "A user story is an informal, general explanation of a software feature written from the perspective of the end user or customer. Write a user story for a given software.\n\nGmail",
@@ -2709,7 +2709,7 @@
     "pair_id": "general:alpaca-eval-42-0692",
     "outcome": "tie",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "tie"
     },
     "category": null,
     "instruction": "Write a Jira ticket for the given task.\n\nNew Employee onboarding",
@@ -2720,7 +2720,7 @@
     "pair_id": "general:alpaca-eval-42-0695",
     "outcome": "loss",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "tie"
     },
     "category": null,
     "instruction": "Include important study notes and key points that someone should know about the given subject.\n\nhistory of the USA",
@@ -2731,7 +2731,7 @@
     "pair_id": "general:alpaca-eval-42-0697",
     "outcome": "win",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "win"
     },
     "category": null,
     "instruction": "Convert natural language into a list of turn-by-turn directions.\n\nGo west on I-10 until you hit the 101 then take it north. You will eventually see the Hollywood sign.",
@@ -2742,7 +2742,7 @@
     "pair_id": "general:alpaca-eval-42-0698",
     "outcome": "tie",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "tie"
     },
     "category": null,
     "instruction": "Provide an ESRB rating for the following game.\n\nThis is an action-adventure game in which players help Kratos and his son on a dangerous quest. Players explore various realms and engage in frenetic hand-to-hand combat against human-like raiders and fantastical creatures (e.g., centaurs, trolls, dragons). Players use axes and chained blades to battle enemies, often resulting in large blood-splatter effects and dismemberment. Players can perform finishing attacks that depict close-up impalement via bladed and hand-held weapons; repeated axe strikes to a creature's neck results in decapitation. The words “f**k” and “sh*t” are heard in the game.",
@@ -2753,7 +2753,7 @@
     "pair_id": "general:alpaca-eval-42-0699",
     "outcome": "win",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "tie"
     },
     "category": null,
     "instruction": "A color description has been provided. Find the CSS code associated with that color.\n\nA light red color with a medium light shade of pink",
@@ -2764,7 +2764,7 @@
     "pair_id": "general:alpaca-eval-42-0701",
     "outcome": "tie",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "tie"
     },
     "category": null,
     "instruction": "Make a list of common phrases for the given section of the paper.\n\nIntroduction",
@@ -2775,7 +2775,7 @@
     "pair_id": "general:alpaca-eval-42-0702",
     "outcome": "win",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "win"
     },
     "category": null,
     "instruction": "We have described a scene from a movie that we have seen in the past. Find out what movie it is.\n\nA choice has to be made between picking the red pill or the blue pill",
@@ -2786,7 +2786,7 @@
     "pair_id": "general:alpaca-eval-42-0704",
     "outcome": "loss",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "tie"
     },
     "category": null,
     "instruction": "Translate the natural language description into a Google Sheets formula.\n\nif C7 is equal to \"U.S.A.\" or \"Canada\" or \"Europe\" or \"The Americas\"",
@@ -2797,7 +2797,7 @@
     "pair_id": "general:alpaca-eval-42-0707",
     "outcome": "loss",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "loss"
     },
     "category": null,
     "instruction": "Predict how many stars the author will give to the restaurant from a Yelp review.\n\nThe reviews were great, but honestly i felt it was just ok. Seemed like a typical tourist spot were the food was mediocre. The service was ok, not great, but not the worst.\nThe bread was very good. I ordered the muscle fries. They had a sweet Vidalia onion flavor. No need for fries bc they were soggy wo much flavor. My boyfriend ordered a pesto chicken pasta and it was again mediocre.",
@@ -2808,7 +2808,7 @@
     "pair_id": "general:alpaca-eval-42-0708",
     "outcome": "tie",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "tie"
     },
     "category": null,
     "instruction": "Categorize the Business into one of the Restaurants, Home Services, Auto Services and Miscellaneous based on its Specialties.\n\nCall us at 650-636-4884 or visit our website to receive a quote. This shop specializes in New Tires and General Auto Repair. We carry all tires in-house and have a wide range to fit any budget or car specifics. If you are unsure what tires you need there are experts on hand and available to help you pick the best tire for your needs. We also carry commercial vehicle tires and can serve a wide array of fleets.",
@@ -2819,7 +2819,7 @@
     "pair_id": "general:alpaca-eval-42-0714",
     "outcome": "tie",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "tie"
     },
     "category": null,
     "instruction": "Write down antonyms for the given word.\n\nlaureating",
@@ -2830,7 +2830,7 @@
     "pair_id": "general:alpaca-eval-42-0718",
     "outcome": "loss",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "loss"
     },
     "category": null,
     "instruction": "Define what the underlined word means for kids.\n\n_keep a promise",
@@ -2841,7 +2841,7 @@
     "pair_id": "general:alpaca-eval-42-0719",
     "outcome": "loss",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "loss"
     },
     "category": null,
     "instruction": "Expand the given sentence and give it more details and depth.\n\nIt changed my life.",
@@ -2852,7 +2852,7 @@
     "pair_id": "general:alpaca-eval-42-0721",
     "outcome": "win",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "tie"
     },
     "category": null,
     "instruction": "Design a simple training challenge on Strava that everyone could attend.",
@@ -2863,7 +2863,7 @@
     "pair_id": "general:alpaca-eval-42-0726",
     "outcome": "loss",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "tie"
     },
     "category": null,
     "instruction": "What are the most effective ways to deal with stress?",
@@ -2874,7 +2874,7 @@
     "pair_id": "general:alpaca-eval-42-0727",
     "outcome": "loss",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "tie"
     },
     "category": null,
     "instruction": "What are the main differences between Python and JavaScript programming languages?",
@@ -2885,7 +2885,7 @@
     "pair_id": "general:alpaca-eval-42-0733",
     "outcome": "win",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "tie"
     },
     "category": null,
     "instruction": "What are the primary factors that influence consumer behavior?",
@@ -2896,7 +2896,7 @@
     "pair_id": "general:alpaca-eval-42-0735",
     "outcome": "win",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "win"
     },
     "category": null,
     "instruction": "What are some potential implications of using a single-use plastic bottle versus a reusable bottle on both the environment and human health?",
@@ -2907,7 +2907,7 @@
     "pair_id": "general:alpaca-eval-42-0739",
     "outcome": "tie",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "win"
     },
     "category": null,
     "instruction": "Describe a scenario where artificial intelligence could be used to improve the quality and efficiency of healthcare delivery.",
@@ -2918,7 +2918,7 @@
     "pair_id": "general:alpaca-eval-42-0741",
     "outcome": "loss",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "tie"
     },
     "category": null,
     "instruction": "How do vaccinations work to protect individuals and communities from infectious diseases, and what is herd immunity?",
@@ -2929,7 +2929,7 @@
     "pair_id": "general:alpaca-eval-42-0744",
     "outcome": "loss",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "loss"
     },
     "category": null,
     "instruction": "Explain the process of natural selection and how it contributes to the evolution and adaptation of species.",
@@ -2940,7 +2940,7 @@
     "pair_id": "general:alpaca-eval-42-0745",
     "outcome": "win",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "tie"
     },
     "category": null,
     "instruction": "How would you introduce yourself as a medieval knight at a royal banquet?",
@@ -2951,7 +2951,7 @@
     "pair_id": "general:alpaca-eval-42-0746",
     "outcome": "win",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "tie"
     },
     "category": null,
     "instruction": "As a pirate captain, what would you say to your crew to motivate them to search for hidden treasure?",
@@ -2962,7 +2962,7 @@
     "pair_id": "general:alpaca-eval-42-0747",
     "outcome": "win",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "win"
     },
     "category": null,
     "instruction": "If you were a Shakespearean character, how would you declare your love for someone in a soliloquy?",
@@ -2973,7 +2973,7 @@
     "pair_id": "general:alpaca-eval-42-0749",
     "outcome": "loss",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "loss"
     },
     "category": null,
     "instruction": "Imagine you are a time traveler from the year 3000. What technological advancements would you tell people about?",
@@ -2984,7 +2984,7 @@
     "pair_id": "general:alpaca-eval-42-0750",
     "outcome": "win",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "tie"
     },
     "category": null,
     "instruction": "As a sports commentator, describe the winning play in the final seconds of a championship game.",
@@ -2995,7 +2995,7 @@
     "pair_id": "general:alpaca-eval-42-0754",
     "outcome": "tie",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "win"
     },
     "category": null,
     "instruction": "Pretend to be a character in a post-apocalyptic world. Describe how you survive and the allies you encounter.",
@@ -3006,7 +3006,7 @@
     "pair_id": "general:alpaca-eval-42-0757",
     "outcome": "tie",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "tie"
     },
     "category": null,
     "instruction": "Why might someone choose to use a paper map or ask for directions instead of relying on a GPS device or smartphone app?",
@@ -3017,7 +3017,7 @@
     "pair_id": "general:alpaca-eval-42-0758",
     "outcome": "loss",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "tie"
     },
     "category": null,
     "instruction": "How can you determine if a person is genuinely interested in a conversation or simply being polite?",
@@ -3028,7 +3028,7 @@
     "pair_id": "general:alpaca-eval-42-0759",
     "outcome": "win",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "win"
     },
     "category": null,
     "instruction": "Why might someone prefer to shop at a small, locally-owned business instead of a large chain store, even if the prices are higher?",
@@ -3039,7 +3039,7 @@
     "pair_id": "general:alpaca-eval-42-0764",
     "outcome": "loss",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "loss"
     },
     "category": null,
     "instruction": "In a world where automation is becoming increasingly prevalent, is it more important to prioritize job creation or technological progress?",
@@ -3050,7 +3050,7 @@
     "pair_id": "general:alpaca-eval-42-0765",
     "outcome": "tie",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "tie"
     },
     "category": null,
     "instruction": "How many times does the average human blink in a lifetime? Try to explain your answer. Your explanation should take the reader through your reasoning step-by-step.",
@@ -3061,7 +3061,7 @@
     "pair_id": "general:alpaca-eval-42-0766",
     "outcome": "tie",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "loss"
     },
     "category": null,
     "instruction": "How many atoms are in a grain of salt? Try to explain your answer. Your explanation should take the reader through your reasoning step-by-step.",
@@ -3072,7 +3072,7 @@
     "pair_id": "general:alpaca-eval-42-0767",
     "outcome": "tie",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "win"
     },
     "category": null,
     "instruction": "How many lightning strikes occur on Earth each day? Try to explain your answer. Your explanation should take the reader through your reasoning step-by-step.",
@@ -3083,7 +3083,7 @@
     "pair_id": "general:alpaca-eval-42-0768",
     "outcome": "tie",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "tie"
     },
     "category": null,
     "instruction": "How many balloons would it take to lift a house like in the movie \"Up\"? Try to explain your answer. Your explanation should take the reader through your reasoning step-by-step.",
@@ -3094,7 +3094,7 @@
     "pair_id": "general:alpaca-eval-42-0770",
     "outcome": "tie",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "tie"
     },
     "category": null,
     "instruction": "How many words are spoken daily on Earth? Try to explain your answer. Your explanation should take the reader through your reasoning step-by-step.",
@@ -3105,7 +3105,7 @@
     "pair_id": "general:alpaca-eval-42-0772",
     "outcome": "loss",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "tie"
     },
     "category": null,
     "instruction": "How many pages are in all the books ever written? Try to explain your answer. Your explanation should take the reader through your reasoning step-by-step.",
@@ -3116,7 +3116,7 @@
     "pair_id": "general:alpaca-eval-42-0773",
     "outcome": "loss",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "tie"
     },
     "category": null,
     "instruction": "How many times has the Earth orbited the Sun since the beginning of life? Try to explain your answer. Your explanation should take the reader through your reasoning step-by-step.",
@@ -3127,7 +3127,7 @@
     "pair_id": "general:alpaca-eval-42-0776",
     "outcome": "tie",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "tie"
     },
     "category": null,
     "instruction": "What if the Aztecs had successfully repelled the Spanish conquistadors?",
@@ -3138,7 +3138,7 @@
     "pair_id": "general:alpaca-eval-42-0779",
     "outcome": "loss",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "tie"
     },
     "category": null,
     "instruction": "What if the Beatles had never formed as a band?",
@@ -3149,7 +3149,7 @@
     "pair_id": "general:alpaca-eval-42-0780",
     "outcome": "loss",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "tie"
     },
     "category": null,
     "instruction": "What if Alan Turing had not cracked the Enigma code during World War II?",
@@ -3160,7 +3160,7 @@
     "pair_id": "general:alpaca-eval-42-0784",
     "outcome": "loss",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "tie"
     },
     "category": null,
     "instruction": "What if Vincent van Gogh had been a successful artist during his lifetime?",
@@ -3171,7 +3171,7 @@
     "pair_id": "general:alpaca-eval-42-0786",
     "outcome": "loss",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "loss"
     },
     "category": null,
     "instruction": "Implement a Python function to find the longest common subsequence of two input strings using dynamic programming.",
@@ -3182,7 +3182,7 @@
     "pair_id": "general:alpaca-eval-42-0788",
     "outcome": "loss",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "loss"
     },
     "category": null,
     "instruction": "Write a program to find the nth Fibonacci number using dynamic programming.",
@@ -3193,7 +3193,7 @@
     "pair_id": "general:alpaca-eval-42-0789",
     "outcome": "loss",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "tie"
     },
     "category": null,
     "instruction": "Implement a binary search algorithm to find a specific element in a sorted array.",
@@ -3204,7 +3204,7 @@
     "pair_id": "general:alpaca-eval-42-0790",
     "outcome": "tie",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "tie"
     },
     "category": null,
     "instruction": "Implement a queue data structure using two stacks in Python.",
@@ -3215,7 +3215,7 @@
     "pair_id": "general:alpaca-eval-42-0792",
     "outcome": "loss",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "loss"
     },
     "category": null,
     "instruction": "Given that f(x) = 5x^3 - 2x + 3, find the value of f(2).",
@@ -3226,7 +3226,7 @@
     "pair_id": "general:alpaca-eval-42-0793",
     "outcome": "win",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "win"
     },
     "category": null,
     "instruction": "Solve for x in the equation 3x + 10 = 5(x - 2).",
@@ -3237,7 +3237,7 @@
     "pair_id": "general:alpaca-eval-42-0794",
     "outcome": "loss",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "loss"
     },
     "category": null,
     "instruction": "If the endpoints of a line segment are (2, -2) and (10, 4), what is the length of the segment?",
@@ -3248,7 +3248,7 @@
     "pair_id": "general:alpaca-eval-42-0795",
     "outcome": "win",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "tie"
     },
     "category": null,
     "instruction": "Can you help me write a formal email to a potential business partner proposing a joint venture?",
@@ -3259,7 +3259,7 @@
     "pair_id": "general:alpaca-eval-42-0797",
     "outcome": "win",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "win"
     },
     "category": null,
     "instruction": "Use an appropriate format to structure a formal letter of recommendation for a student applying to a prestigious graduate program in computer science.",
@@ -3270,7 +3270,7 @@
     "pair_id": "general:alpaca-eval-42-0799",
     "outcome": "loss",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "loss"
     },
     "category": null,
     "instruction": "Draft an apology email to a customer who experienced a delay in their order, and provide reassurance that the issue has been resolved.",
@@ -3281,7 +3281,7 @@
     "pair_id": "general:alpaca-eval-42-0802",
     "outcome": "tie",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "tie"
     },
     "category": null,
     "instruction": "Write a captivating movie review for a recently released science fiction film, discussing its plot, characters, and special effects.",
@@ -3292,7 +3292,7 @@
     "pair_id": "general:alpaca-eval-42-0803",
     "outcome": "loss",
     "other_judges": {
-      "gemini-3-flash-preview": null
+      "gemini-3-flash-preview": "loss"
     },
     "category": null,
     "instruction": "Structure a podcast script for an episode discussing the influence of streaming platforms on the music industry.",

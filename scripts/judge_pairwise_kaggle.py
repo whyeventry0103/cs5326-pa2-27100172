@@ -170,10 +170,12 @@ class KaggleJudge:
         # A cap keeps the proxy's per-request cost estimate (based on max output length) within quota.
         self.extra = {"max_tokens": max_tokens} if max_tokens else None
 
-    def __call__(self, prompt: str) -> str:
+    def __call__(self, prompt: str, attempt: int = 1) -> str:
         self.calls += 1
+        # Thinking tokens count against the cap, so a truncated (unparseable) reply is retried with 2x the budget.
+        extra = {"max_tokens": self.extra["max_tokens"] * 2 ** (attempt - 1)} if self.extra else None
         with self.kbench.chats.new(f"judge-{self.calls}", orphan=True):
-            reply = self.llm.prompt(prompt, temperature=0, extra_api_params=self.extra)
+            reply = self.llm.prompt(prompt, temperature=0, extra_api_params=extra)
         return reply if isinstance(reply, str) else str(reply)
 
 
@@ -184,7 +186,7 @@ class MockJudge:
         self.name = f"mock:{model}"
         self.calls = 0
 
-    def __call__(self, prompt: str) -> str:
+    def __call__(self, prompt: str, attempt: int = 1) -> str:
         self.calls += 1
         if self.calls == 1:
             raise RuntimeError("simulated transient proxy error")
@@ -249,7 +251,7 @@ def judge_file(
                 time.sleep(wait)
             last_call = time.time()
             try:
-                reply = judge(prompt)
+                reply = judge(prompt, attempt=attempt)
                 verdicts = parse_verdicts(reply, len(batch))
                 break
             except Exception as exc:  # noqa: BLE001 - any proxy/parse error is retried then logged
