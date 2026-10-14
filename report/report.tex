@@ -20,7 +20,7 @@
 \vspace{-1.5em}
 
 \section{Repository, Models, and Data}
-\textbf{Code:} \url{https://github.com/whyeventry0103/cs5326-pa2-27100172} (private until submission).
+\textbf{Code:} \url{https://github.com/whyeventry0103/cs5326-pa2-27100172}.
 SFT and both DPO runs are hand-written loops in \texttt{src/alignment} and \texttt{scripts/train\_\{sft,dpo\}.py}; no HF \texttt{Trainer} or TRL is used for them. \texttt{submission\_adapter.py} wraps this code and passes the public tests plus 14 additional edge-case tests (\texttt{tests/test\_alignment\_core.py}).
 
 \textbf{Base checkpoints.} \texttt{Qwen/Qwen2.5-0.5B} (SFT, DPO); \texttt{HuggingFaceTB/SmolLM2-360M-Instruct} (LoRA-DPO).
@@ -71,8 +71,9 @@ Selected ckpt & best val loss: step 937 & best val acc.: step 420 & best val acc
 \section{Parameter Choices and Deviations}
 \textbf{Resource/environment-driven.}
 \begin{itemize}
-\item \textit{Hardware:} runs used a shared 2$\times$RTX 6000 Ada server instead of Kaggle T4$\times$2, with only $\sim$14\,GB free per GPU. I kept the T4 recipe (fp16 autocast + GradScaler, the same batch sizes) so the numbers remain comparable to the guide configuration.
+\item \textit{Hardware:} runs used a shared 2$\times$RTX 6000 Ada server instead of Kaggle T4$\times$2, with only $\sim$14\,GB free per GPU (the TA confirmed that any GPU may be used for training; evaluation uses the free Kaggle model API). I kept the T4 recipe (fp16 autocast + GradScaler, the same batch sizes) so the numbers remain comparable to the guide configuration.
 \item \textit{DPO placement:} the guide places the policy on \texttt{cuda:0} and the reference on \texttt{cuda:1}. On this server, direct GPU-to-GPU copies silently returned zeros, which zeroed the reference log-probs (step-0 reward margin $-4.47$ instead of $0$). I fixed this by staging cross-device copies through host memory, added a guard that aborts if step-0 rewards are non-zero, and ran each DPO job with policy and reference on the same GPU (12.5\,GB peak with gradient checkpointing). The reference is kept in fp32, not fp16, so step-0 rewards are exactly zero (manual \S10.5).
+\item \textit{Last partial batch:} an epoch takes only full accumulation windows, so SFT ran 937 steps over 29{,}984 of the 30{,}000 examples and each DPO run 468 steps over 14{,}976 of the 15{,}000 pairs (the last 16 and 24 shuffled rows were not used).
 \item \textit{Judge location:} the Kaggle model proxy was used only for judging (\S\ref{sec:results}); everything else ran on the server.
 \end{itemize}
 \textbf{Performance-driven.}
@@ -163,7 +164,7 @@ Category & HH-DPO & UF-DPO \\
 
 \section{Limitations and Reproducibility}
 \begin{itemize}
-\item \textbf{Judge reliability.} Both LLM judges favour Response A in 61--65\% of decided Qwen comparisons, and agree with each other on only 66--73\% of Qwen pairs ($\kappa$ 0.49--0.56). Swap-consistent scoring removes the position effect but converts many verdicts into ties, so small effects (UltraFeedback, cross-set) cannot be resolved with 300 prompts. Judges can also prefer longer or more confident answers.
+\item \textbf{Judge reliability.} Both LLM judges favour Response A in 61--65\% of decided Qwen comparisons, and agree with each other on only 66--73\% of Qwen pairs ($\kappa$ 0.49--0.56). Swap-consistent scoring removes the position effect but converts many verdicts into ties, so small effects (UltraFeedback, cross-set) cannot be resolved with 300 prompts. Judges can also prefer longer or more confident answers. The HH-set rubric centres on safe handling (refusal, privacy, safe redirection, calibrated uncertainty) plus helpfulness and correctness, and does not restate the general criteria (instruction-following, concision, formatting, hallucinations); all rubrics are in \texttt{scripts/judge\_pairwise\_kaggle.py}.
 \item \textbf{Single seed, single run per track}, 300/300/40 evaluation prompts, and greedy decoding with a repetition penalty (1.2) that both models share but that may interact differently with DPO's longer outputs. The persona set is small and I wrote it myself; the LoRA configuration was \emph{selected} on generations from these same 40 prompts, so the persona numbers are optimistic (the lr\,=\,$10^{-4}$ ablation is reported for that reason).
 \item \textbf{Compute deviations:} RTX 6000 Ada instead of T4; policy and reference on one GPU; the first DPO attempt with cross-GPU placement produced corrupted reference log-probs and was discarded; both reported runs use same-GPU placement.
 \end{itemize}
